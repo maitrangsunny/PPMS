@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "name": "Tiger Nixon",
+      "phone": "0198321313",
+      "role": "Administrator",
+      "state": "Hoạt động",
+      "date": "2014/12/12",
+      "point": "320,800"
+    },
+    {
+      "name": "Garrett Winters",
+      "phone": "09854637123",
+      "role": "Administrator",
+      "state": "Hoạt động",
+      "date": "2011/07/25",
+      "point": "170,750"
+    },
+    {
+      "name": "Ashton Cox",
+      "phone": "0123765489",
+      "role": "User",
+      "state": "Hoạt động",
+      "date": "2014/01/12",
+      "point": "86,000"
+    },
+    {
+      "name": "Cedric Kelly",
+      "phone": "0909345623",
+      "role": "User",
+      "state": "Không hoạt động",
+      "date": "2012/03/29",
+      "point": "433,060"
+    },
+    {
+      "name": "Airi Satou",
+      "phone": "01212567843",
+      "role": "User",
+      "state": "Không hoạt động",
+      "date": "2008/11/28",
+      "point": "162,700"
+    },
+    {
+      "name": "Brielle Williamson",
+      "phone": "0973123123",
+      "role": "PM",
+      "state": "Hoạt động",
+      "date": "2012/12/02",
+      "point": "372,000"
+    }
+  ]
+}

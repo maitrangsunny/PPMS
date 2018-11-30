@@ -1,0 +1,53 @@
+[
+    {
+      "id": "aaaaaaaa",
+      "name": "Ho Chi Minh",
+      "province": [
+        {
+          "id": "123443sadsad",
+          "name": "Q1",
+          "branch": [
+            {
+              "id": "23123awedwq",
+              "name": "Cửa hàng thuốc 1"
+            },
+            {
+              "id": "23123awedw3",
+              "name": "Cửa hàng thuốc 2"
+            }
+          ]
+        },
+        {
+          "id": "123443ssad",
+          "name": "Q9",
+          "branch": [
+            {
+              "id": "23123awe6wq",
+              "name": "Cửa hàng thuốc 2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bbbbbbb",
+      "name": "Ha Noi",
+      "province": [
+        {
+          "id": "123443sadsad",
+          "name": "Quan Hoan Kiem",
+          "branch": [
+            {
+              "id": "23123awedwq",
+              "name": "Cửa hàng thuốc 2"
+            },
+            {
+              "id": "23123awedw3",
+              "name": "Cửa hàng thuốc 2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+

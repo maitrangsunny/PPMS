@@ -1,0 +1,152 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+.select2-selection__choice {
+  padding: 1px 28px 1px 8px;
+  margin: 4px 0 3px 5px;
+}
+
+.select2-selection__choice__remove {
+  padding: 3px 4px 3px 6px;
+  /*margin : 0;*/
+}
+
+#search {
+  padding-bottom: 20px;
+}
+
+.input-order {
+  padding: 10px;
+}
+
+.text-input {
+  border-radius: 5px;
+}
+
+.button-add {
+  margin-top: 40px;
+  align-self: center;
+}
+
+div.custom-table-bill {
+  height: 600px;
+  overflow: auto;
+}
+
+div.custom-table-thuoc {
+  height: 300px;
+  overflow: auto;
+}
+
+div.custom-table-list-bill {
+  height: 200px;
+  overflow: auto;
+}
+
+div.btn-confirm-customer {
+  margin-top: 20px;
+}
+
+.fontWeight {
+  font-weight: bold;
+}
+
+input[type="checkbox"].switch {
+  position: absolute;
+  opacity: 0;
+}
+
+input[type="checkbox"].switch + div {
+  vertical-align: middle;
+  width: 40px;
+  height: 20px;
+  border-radius: 999px;
+  background-color: #00b0f2;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-property: background-color, box-shadow;
+  transition-property: background-color, box-shadow;
+  cursor: pointer;
+}
+
+input[type="checkbox"].switch + div span {
+  position: absolute;
+  font-size: 1.6rem;
+  color: white;
+  margin-top: 12px;
+}
+
+input[type="checkbox"].switch + div span:nth-child(1) {
+  margin-left: 15px;
+}
+
+input[type="checkbox"].switch + div span:nth-child(2) {
+  margin-left: 55px;
+}
+
+input[type="checkbox"].switch:checked + div {
+  width: 94px;
+  background-position: 0 0;
+  background-color: #3b89ec;
+}
+
+input[type="checkbox"].switch + div {
+  width: 94px;
+  height: 48px;
+}
+
+input[type="checkbox"].switch:checked + div {
+  background-color: #57bb00;
+}
+
+input[type="checkbox"].switch + div > div {
+  float: left;
+  width: 46px;
+  height: 46px;
+  border-radius: inherit;
+  background: #ffffff;
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-property: transform, background-color;
+  transition-property: transform, background-color;
+  pointer-events: none;
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+input[type="checkbox"].switch:checked + div > div {
+  -webkit-transform: translate3d(20px, 0, 0);
+  transform: translate3d(20px, 0, 0);
+  background-color: #ffffff;
+}
+
+input[type="checkbox"].bigswitch.switch + div > div {
+  width: 44px;
+  height: 44px;
+  margin-top: 1px;
+}
+
+input[type="checkbox"].switch:checked + div > div {
+  -webkit-transform: translate3d(46px, 0, 0);
+  transform: translate3d(46px, 0, 0);
+}
+

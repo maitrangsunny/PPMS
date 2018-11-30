@@ -1,0 +1,66 @@
+{
+  "pageCurrent":1,
+  "total":3,
+  "data": [
+    {
+      "id": "1",
+      "role": "Administrator",
+      "bref": "ASSmin",
+      "permission": [
+        {
+          "name":"frontPage",
+          "read": true,
+          "write":true,
+          "execute":true
+        },
+        {
+          "name":"api",
+          "read": true,
+          "write":true,
+          "execute":true
+        }
+      ],
+      "date": "03/04/14"
+    },
+    {
+      "id": "2",
+      "role": "CSKH",
+      "bref": "Nhóm quyền dành cho CSKH",
+      "permission": [
+        {
+          "name":"frontPage",
+          "read": true,
+          "write":false,
+          "execute":true
+        },
+        {
+          "name":"api",
+          "read": true,
+          "write":true,
+          "execute":true
+        }
+      ],
+      "date": "03/23/13"
+    },
+    {
+      "id": "3",
+      "role": "Kế toán",
+      "bref": "Nhóm quyền dành cho kế toán",
+      "permission": [
+        {
+          "name":"frontPage",
+          "read": true,
+          "write":false,
+          "execute":false
+        },
+        {
+          "name":"api",
+          "read": true,
+          "write":true,
+          "execute":true
+        }
+      ],
+      "date": "02/13/14"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "items": [
+    {
+      "_id": "actions",
+      "title": "Đơn hàng",
+      "icon": "fa fa-fw fa-tag",
+      "items": [
+        {
+          "_id": "widget",
+          "title": "Tạo đơn hàng",
+          "icon": "fa fa-lg fa-fw fa-book",
+          "route": "/noi-dung"
+        },
+        {
+          "_id": "search_invoice",
+          "title": "Danh sách đơn hàng",
+          "icon": "fa fa-fw fa-sticky-note-o",
+          "route": "/tra-cuu/don-hang"
+        },
+        {
+          "_id": "debt_list",
+          "title": "Danh sách công nợ",
+          "icon": "fa fa-fw fa-sticky-note-o",
+          "route": "/debt-list"
+        }
+      ]
+    },
+    {
+      "_id": "product",
+      "title": "Khách Hàng",
+      "icon": "fa fa-fw fa-shopping-cart",
+      "items": [
+        {
+          "_id": "vendor_list",
+          "title": "Danh sách khách hàng",
+          "icon": "fa fa-fw fa-barcode",
+          "route": "/san-pham"
+        },
+        {
+          "_id": "list_khach_hang",
+          "title": "Thêm khách hàng",
+          "icon": "fa fa-fw fa-list-alt",
+          "route": "/them-khach-hang"
+        }
+      ]
+    },
+    {
+      "_id": "search",
+      "title": "Cửa hàng",
+      "icon": "fa fa-fw fa-search",
+      "items": [
+        {
+          "_id": "vendor",
+          "title": "Nhà cung cấp",
+          "icon": "fa fa-fw fa-users",
+          "route": "/nha-cung-cap/danh-sach"
+        },
+        {
+          "_id": "stock",
+          "title": "Nhập hàng",
+          "icon": "fa fa-fw fa-university",
+          "items": [
+            {
+              "_id": "stock_list",
+              "title": "Danh sách",
+              "icon": "fa fa-fw fa-list-ol",
+              "route": "/sales/stock/list"
+            },
+            {
+              "_id": "stock_add",
+              "title": "Thêm mới",
+              "icon": "fa fa-fw fa-plus",
+              "route": "/sales/stock/add"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_id": "report",
+      "title": "Thống kê",
+      "icon": "fa fa-fw fa-line-chart",
+      "items": [
+        {
+          "_id": "report_top_buy_product",
+          "title": "Top sản phẩm",
+          "icon": "fa fa-fw fa-line-chart",
+          "route": "/thong-ke/san-pham-mua-nhieu"
+        }
+      ]
+    },
+    {
+      "_id": "account",
+      "title": "Tài khoản",
+      "icon": "fa fa-lg fa-fw fa-user",
+      "items": [
+        {
+          "_id": "list",
+          "title": "Danh sách",
+          "icon": "fa fa-lg fa-fw fa-users",
+          "route": "/tai-khoan/danh-sach"
+        },
+        {
+          "_id": "role",
+          "title": "Đổi mật khẩu",
+          "icon": "fa fa-lg fa-fw fa-book",
+          "route": "/tai-khoan/doi-mat-khau"
+        }
+      ]
+    },
+    {
+      "_id": "manage",
+      "title": "Quản trị",
+      "icon": "fa fa-fw fa-bank",
+      "items": [
+        {
+          "_id": "manage_geolocation",
+          "title": "Danh sách cửa hàng",
+          "icon": "fa fa-fw fa-map",
+          "route": "/manage/list"
+        },
+        {
+          "_id": "pending_product",
+          "title": "Thuốc chờ xác nhận",
+          "icon": "fa fa-fw fa-map",
+          "route": "/manage/pending-product"
+        },
+        {
+          "_id": "delete_product",
+          "title": "Xóa thuốc trong kho",
+          "icon": "fa fa-fw fa-map",
+          "route": "/manage/delete-product"
+        },
+        {
+          "_id": "list_product_customr",
+          "title": "Quản lý cửa hàng",
+          "icon": "fa fa-fw fa-map",
+          "route": "/manage/list-product-customer"
+        }
+      ]
+    }
+  ]
+}

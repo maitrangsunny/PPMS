@@ -1,0 +1,85 @@
+{
+  "pageCurrent": 1,
+  "total": 10,
+  "data": [
+    {
+      "id": "1",
+      "name": "Mừng lễ 30/4",
+      "start": "03/04/14",
+      "end": "03/04/14",
+      "state": "Đang hoạt động",
+      "total": "100",
+      "daSuDung": "5",
+      "conLai": "95",
+      "tongTienGiam": "1000000",
+      "coupon": [
+        {
+          "id": "1",
+          "code":"HDARE",
+          "total": "100",
+          "daSuDung": "5",
+          "conLai": "95",
+          "tongTienGiam": "1000000"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Mừng lễ 8/3",
+      "start": "03/04/14",
+      "end": "03/04/14",
+      "state": "Đã kết thúc",
+      "total": "100",
+      "daSuDung": "5",
+      "conLai": "95",
+      "tongTienGiam": "1000000",
+      "coupon": [
+        {
+          "id": "1",
+          "code":"HDARE",
+          "total": "100",
+          "daSuDung": "5",
+          "conLai": "95",
+          "tongTienGiam": "1000000"
+        },
+        {
+          "id": "2",
+          "code":"HDASQ",
+          "total": "100",
+          "daSuDung": "5",
+          "conLai": "95",
+          "tongTienGiam": "1000000"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Mừng lễ 20/10",
+      "start": "03/04/14",
+      "end": "03/04/14",
+      "state": "Đã kết thúc",
+      "total": "100",
+      "daSuDung": "5",
+      "conLai": "95",
+      "tongTienGiam": "1000000",
+      "coupon": [
+        {
+          "id": "1",
+          "code":"HDARE",
+          "total": "100",
+          "daSuDung": "5",
+          "conLai": "95",
+          "tongTienGiam": "1000000"
+        },
+        {
+          "id": "2",
+          "code":"WQARE",
+          "total": "100",
+          "daSuDung": "5",
+          "conLai": "95",
+          "tongTienGiam": "1000000"
+        }
+      ]
+    }
+  ]
+}
