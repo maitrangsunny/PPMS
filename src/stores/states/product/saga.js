@@ -76,6 +76,13 @@ function* adminDeleteProduct(action) {
   });
 }
 
+
+function* debtList(action) {
+  let response = yield call(API.request, action.payload);
+  yield put({ ...action, type: Types.DEBT_LIST_SUCCESS, response });
+}
+
+
 export default function* saga() {
   yield takeLatest(Types.ADMIN_DELETE_PRODUCT, adminDeleteProduct),
     yield all([
@@ -93,5 +100,6 @@ export default function* saga() {
       yield takeLatest(Types.SORT_LIST_BILL, listBill),
       yield takeLatest(Types.ADD_PRODUCT, addProduct),
       yield takeLatest(Types.LIST_ALL_SUP, listSup),
+      yield takeLatest(Types.DEBT_LIST, debtList)
     ]);
 }

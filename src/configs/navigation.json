@@ -21,7 +21,7 @@
           "_id": "debt_list",
           "title": "Danh sách công nợ",
           "icon": "fa fa-fw fa-sticky-note-o",
-          "route": "/debt-list"
+          "route": "/tra-cuu/cong-no"
         }
       ]
     },

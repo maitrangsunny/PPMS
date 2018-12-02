@@ -183,4 +183,10 @@ export default createReducer(INIT_STATE, {
       flagUpdateProduct: action.payload,
     };
   },
+  [Types.DEBT_LIST_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      debtList: action.response,
+    };
+  },
 });

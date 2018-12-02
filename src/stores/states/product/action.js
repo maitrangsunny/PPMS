@@ -222,6 +222,18 @@ export function editBill(
   };
 }
 
+// 
+export function debtList(token) {
+  return {
+    type: Types.DEBT_LIST,
+    payload: {
+      token: token,
+      api: Configs.API + "debts?page=3",
+      method: "GET",
+    },
+  };
+}
+
 export function setFlagShortBill(bool = true) {
   return {
     type: Types.SET_FLAG_SHORT_BILL,
@@ -270,3 +282,4 @@ export function setFlagUpdateProduct(bool = true) {
     payload: bool,
   };
 }
+

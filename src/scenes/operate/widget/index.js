@@ -6,8 +6,6 @@ import Layout from "../../../components/layout";
 import Utils, { LINK } from "../../../utils";
 
 import List from "./widget_list";
-import Add from "./widget_add";
-import DebtList from "./debt_list";
 
 class Widget extends Component {
   constructor(props) {
@@ -15,7 +13,6 @@ class Widget extends Component {
   }
 
   render() {
-    console.log(this.props.match.params.action);
     let child = <div />;
     if (!this.props.match.params.action) {
       child = <List />;
