@@ -154,6 +154,19 @@ export default createReducer(INIT_STATE, {
     };
   },
 
+  [Types.DEBT_LIST_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      debtList: action.response,
+    };
+  },
+
+  [Types.DETAIL_DEBT_SUCCESS]: (state,action)=>{
+    return {
+      ...this.state,
+      detailDebt: action.response
+    }
+  },
   ///////////
   [Types.SET_FLAG_LIST_PENDING]: (state, action) => {
     return {
@@ -181,12 +194,6 @@ export default createReducer(INIT_STATE, {
     return {
       ...state,
       flagUpdateProduct: action.payload,
-    };
-  },
-  [Types.DEBT_LIST_SUCCESS]: (state, action) => {
-    return {
-      ...state,
-      debtList: action.response,
     };
   },
 });

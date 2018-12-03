@@ -222,8 +222,8 @@ export function editBill(
   };
 }
 
-// 
-export function debtList(token) {
+
+export function getDebtList(token) {
   return {
     type: Types.DEBT_LIST,
     payload: {
@@ -232,6 +232,20 @@ export function debtList(token) {
       method: "GET",
     },
   };
+}
+
+export function getDetailDebt(token, id){
+	console.log('action',id);
+	return {
+		type: Types.DETAIL_DEBT,
+		payload: {
+			token: token,
+			api: Configs.API + "debt/"+id,
+			method: "GET",
+			payload: {},
+		}
+
+	}
 }
 
 export function setFlagShortBill(bool = true) {

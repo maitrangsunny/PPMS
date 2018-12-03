@@ -17,7 +17,6 @@ class Search extends Component {
 
   render() {
     let child = <div />;
-    console.log('asdhasdjasdasdasd',this.props.match.params.action)
     switch (this.props.match.params.action) {
       case "gio-hang":
         child = <Invoice />;

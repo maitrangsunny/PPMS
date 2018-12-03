@@ -49,6 +49,9 @@ export default keymirror(
 
     DEBT_LIST: null,
     DEBT_LIST_SUCCESS: null,
+
+    DETAIL_DEBT: null,
+    DETAIL_DEBT_SUCCESS: null,
   },
   "PRODUCT_"
 );

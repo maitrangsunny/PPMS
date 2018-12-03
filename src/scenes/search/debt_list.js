@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Modal, Button} from "react-bootstrap";
 import Connect from '../../stores/connect';
 import JarvisWidget from '../../components/jarvis_widget';
 import Loading from '../../components/loading';
@@ -11,13 +11,25 @@ class DebtList extends Component {
 		this.state = {
 			loading: true,
 			list: false,
+			show: false,
+			data:false
 		};
 	}
 
-	componentDidMount =  () => 
- 	{	this.props.actions.product.debtList(
+	async componentDidMount(){	
+		await this.props.actions.product.getDebtList(
 			this.props.storage.token
 		);
+		if(this.props.id){
+			this.setState({
+				loading: true
+			});
+			await this.props.actions.product.getDetailDebt(
+				this.props.storage.token,
+				this.props.id,
+			)
+			console.log(this.props.id);
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -27,14 +39,49 @@ class DebtList extends Component {
 				loading: false,
 			});
 		}
+		if (nextProps.product.detailDebt &&nextProps.product.detailDebt.status == 200 ) {
+			this.setState({
+				data : nextProps.product.detailDebt.data
+			})
+			  		
+			console.log(data);
+			// await this.setState({
+			 
+			// });
+		}
+	}
+
+	handleClose = () => {
+		this.setState({ show: false });
+	}
+
+	handleShow = ()=> {
+		this.setState({ show: true });
+	}
+
+	// async showDetail(item,index) {
+	// 	console.log(1);
+	// 	await this.setState({ show: true });
+	// 	return (
+	// 		<tr key={index}>
+	// 			<th>{item.payment}</th>
+	// 			<th>{item.rest}</th>
+	// 			<th>{item.expired}</th>
+	// 		</tr>
+	// 	)
+	
+	// }
+	
+	editItem = (index) => {
+		console.log(1);
+		this.setState({ show: true });
 	}
 
 	changeStatusDate=date=>{	
 		const currentDate = Moment(new Date());
 		let	expiredDate = Moment(date*1000);
 		let duration = Moment.duration(expiredDate.diff(currentDate));
-		let days = Math.round(duration.asDays());
-		console.log(days);
+		let days = Math.ceil(duration.asDays());
 		let warningValue = null;
 		switch(days){
 			case 3:
@@ -71,6 +118,7 @@ class DebtList extends Component {
 						<table className="table table-bordered table-striped table-hover">
 							<thead>
 							<tr>
+								<th>STT</th>
 								<th>Tên Khách Hàng</th>
 								<th>Địa chỉ</th>
 								<th>Payment</th>
@@ -86,24 +134,27 @@ class DebtList extends Component {
 										let dayValue = this.changeStatusDate(item.expired);
 										return (
 											<tr key={index}>
+												<td>{index + 1}</td>
 												<td>{item.order.name}</td>
 												<td>{item.order.address}</td>
 												<td>{parseInt(item.payment).toLocaleString('en')}</td>
 												<td>{parseInt(item.rest).toLocaleString('en')}</td>	
 												<td>{Moment(item.expired * 1000).format('DD-MM-YYYY')}</td>	
 												<td>
-													<label className={`${dayValue==3?'label label-danger':`${dayValue===6?'label label-warning':'label label-primary'}`}`}>Sắp thu</label>
+													<label className={`${dayValue===3?'label label-danger':`${dayValue===6?'label label-warning':'label label-primary'}`}`}>Sắp thu</label>
 												</td>
 												<td>
 													<button
 														type="button"
-														className="btn btn-info col-xs-offset-1">
+														className="btn btn-info" 
+														//onClick={()=>this.showDetail(item,index)}
+														onClick={this.handleShow}>
 														Chi tiết
 													</button>
 													<button
 														type="button"
-														className="btn btn-success col-xs-offset-1">
-														Xoa
+														className="btn btn-success">
+														Xóa
 													</button>
        											 </td>						
 											</tr>
@@ -117,6 +168,28 @@ class DebtList extends Component {
 				</div>
 			</JarvisWidget>
 			</div>
+			<Modal show={this.state.show} onHide={this.handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Modal heading</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<table>
+						<thead>
+							<tr>
+							<th>STT</th>
+							<th>Tên</th>
+							<th>Số lượng</th>
+							</tr>
+						</thead>
+						<tbody>
+							{/* {list.length > 0 ? list.map((item, index)=>{
+							this.showDetail(item, index);
+							}): null} */}
+						</tbody>
+					</table>				
+								
+				</Modal.Body>
+        	</Modal>
 		</div>
 		);
 	}

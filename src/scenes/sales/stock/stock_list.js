@@ -67,12 +67,12 @@ class StockList extends Component {
 												<td>{index + 1}</td>
 												<td>{item.name}</td>	
 												<td>{item.stock_balance}</td>									
-												<td className={`${item.is_enable === 1? 'label label-success' : ''}`}>
+												<td>
 													<label className={`${item.is_enable===1 ?'label label-success' : 'label label-warning'}`}>{`${item.is_enable === 1 ? "còn hàng" : "hết hàng"}`}</label>
 												</td>
 											</tr>
 										)
-									}) : "test"
+									}) : null
 								}
 							</tbody>
 						</table>
