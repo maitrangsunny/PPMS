@@ -367,10 +367,6 @@ class WidgetList extends Component {
     );
   };
 
-  hanldeKeyPress = e =>{
-	
-  }
-
   handleKeyDown = e => {
     if (e.keyCode == 9) {
       if (this.state.gia == "") {

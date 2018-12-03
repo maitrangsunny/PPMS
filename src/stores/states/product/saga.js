@@ -84,7 +84,7 @@ function* getDebtList(action) {
 
 function* getDetailDebt(action){ 
   let response = yield call(API.request, action.payload);
-  yield put({...action, type: Types.DETAIL_DEBT, response});
+  yield put({...action, type: Types.DETAIL_DEBT_SUCCESS, response});
 }
 
 

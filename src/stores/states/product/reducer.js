@@ -22,6 +22,9 @@ const INIT_STATE = {
   thongkekhachahangtheongay: {},
   thongke: {},
   adminDeleteProduct: {},
+  debtList: [],
+  detailDebt:[]
+
 };
 
 export default createReducer(INIT_STATE, {
@@ -162,6 +165,7 @@ export default createReducer(INIT_STATE, {
   },
 
   [Types.DETAIL_DEBT_SUCCESS]: (state,action)=>{
+    console.log("reducer",action);
     return {
       ...this.state,
       detailDebt: action.response
