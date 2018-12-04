@@ -235,7 +235,6 @@ export function getDebtList(token) {
 }
 
 export function getDetailDebt(token, id){
-	console.log('action',id);
 	return {
 		type: Types.DETAIL_DEBT,
 		payload: {
@@ -243,6 +242,23 @@ export function getDetailDebt(token, id){
 			api: Configs.API + "debt/"+id,
 			method: "GET",
 			payload: {},
+		}
+
+	}
+}
+
+export function updateDebt(token,id, payment, rest, expired){
+	return {
+		type: Types.UPDATE_DEBT,
+		payload: {
+			token: token,
+			api: Configs.API + "debt/" + id +"/edit",
+			method: "POST",
+			payload:{
+				payment: payment,
+				rest: rest,
+				expired: expired.toString()
+			}
 		}
 
 	}
@@ -297,3 +313,9 @@ export function setFlagUpdateProduct(bool = true) {
   };
 }
 
+export function setFlagUpdateDebt(bool = true) {
+  return {
+    type: Types.SET_FLAG_UPDATE_DEBT,
+    payload: bool,
+  };
+}

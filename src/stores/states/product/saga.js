@@ -87,6 +87,11 @@ function* getDetailDebt(action){
   yield put({...action, type: Types.DETAIL_DEBT_SUCCESS, response});
 }
 
+function* updateDebt(action){
+  console.log(action);
+  let response = yield call(API.request, action.payload);
+  yield put({...action, type: Types.UPDATE_DEBT_SUCCESS, response});
+}
 
 export default function* saga() {
   yield takeLatest(Types.ADMIN_DELETE_PRODUCT, adminDeleteProduct),
@@ -105,7 +110,8 @@ export default function* saga() {
       yield takeLatest(Types.SORT_LIST_BILL, listBill),
       yield takeLatest(Types.ADD_PRODUCT, addProduct),
       yield takeLatest(Types.LIST_ALL_SUP, listSup),
-	  yield takeLatest(Types.DEBT_LIST, getDebtList),
-	  yield takeLatest(Types.DETAIL_DEBT, getDetailDebt)
+	    yield takeLatest(Types.DEBT_LIST, getDebtList),
+      yield takeLatest(Types.DETAIL_DEBT, getDetailDebt),
+      yield takeLatest(Types.UPDATE_DEBT, updateDebt)
     ]);
 }

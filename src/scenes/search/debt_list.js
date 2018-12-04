@@ -3,6 +3,8 @@ import {Modal, Button, Panel} from "react-bootstrap";
 import Connect from '../../stores/connect';
 import JarvisWidget from '../../components/jarvis_widget';
 import Loading from '../../components/loading';
+import serialize from 'form-serialize';
+import UiDatepicker from "../../components/forms/date_picker";
 import Moment from 'moment';
 import _ from 'lodash';
 class DebtList extends Component {
@@ -12,7 +14,10 @@ class DebtList extends Component {
 			loading: true,
 			list: false,
 			show: false,
-			data:false
+			data:false,
+			payment: null,
+			rest: null,
+			expired: null
 		};
 	}
 
@@ -22,7 +27,7 @@ class DebtList extends Component {
 		);
 	}
 
-	async componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps) {
 		if (nextProps.product.debtList && nextProps.product.debtList.status == 200) {
 			this.setState({
 				list: nextProps.product.debtList.data,
@@ -34,27 +39,68 @@ class DebtList extends Component {
 				data: nextProps.product.detailDebt.data,
 			});
 		}
+		if (nextProps.product.updateDebt &&
+			nextProps.product.updateDebt.status == 200 &&
+			!nextProps.product.flagUpdateDebt) {
+				nextProps.actions.product.setFlagUpdateDebt(true);
+				this.setState({
+				loading: false,
+				show: false
+			});
+			this.props.actions.product.getDebtList(
+				this.props.storage.token
+			);
+		  }
 	}
 
 	handleClose = () => {
-		this.setState({ show: false });
+		this.setState({ 
+			show: false,
+			payment: null,
+			rest: null,
+			expired: null
+		});
 	}
 
 	handleShow = ()=> {
 		this.setState({ show: true });
 	}
 
-	showDetail=id => {
+	showDetail= id => {
 		this.setState({ show: true})
 		this.props.actions.product.getDetailDebt(
 		  this.props.storage.token,
 		  id
 		);
 	}
-	
-	editItem = (index) => {
-		console.log(1);
-		this.setState({ show: true });
+
+	handleInputChange = event => {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;	
+		console.log(name+'==='+value);
+		this.setState({
+		  [name]: value
+		});
+	}	
+
+	onUpdateDebt = (id)=>{
+		if(_.isEmpty(this.state.payment) || _.isEmpty(this.state.rest) || _.isEmpty(this.state.expired)){
+			alert("Không bỏ trống các field. Vui lòng nhập giá trị!");
+		}else {
+			this.props.actions.product.updateDebt(
+				this.props.storage.token,
+				id,
+				this.state.payment,
+				this.state.rest,
+				Moment(this.state.expired).valueOf()/1000
+			);	
+		}
+		this.setState({
+			payment: null,
+			rest: null,
+			expired: null
+		});
 	}
 
 	changeStatusDate=date=>{	
@@ -78,10 +124,6 @@ class DebtList extends Component {
 
 	render() {
 		var {list, data} = this.state;
-		console.log("data", this.state.data);
-		let payment = parseInt(data.payment).toLocaleString('en');
-		let rest = parseInt(data.rest).toLocaleString('en');
-		let expiredDate = Moment(data.expired * 1000).format('YYYY-MM-DD');
 		return (
 			<div className="panel">
 				<Loading loading={this.state.loading} />
@@ -167,32 +209,44 @@ class DebtList extends Component {
 							</thead>
 							<tbody>
 								<tr>
-									<td>{payment}</td>
-									<td>{rest}</td>	
-									<td>{expiredDate}</td>
+									<td>{parseInt(data.payment).toLocaleString('en')}</td>
+									<td>{parseInt(data.rest).toLocaleString('en')}</td>	
+									<td>{Moment(data.expired * 1000).format('DD-MM-YYYY')}</td>
 								</tr>
 							
 							</tbody>
 						</table>
 						</div>
-						<form>
+						<form id="attributeForm">
 							<div className="form-group">
 								<label>Payment</label>
-								<input type="text" className="form-control" placeholder="Payment" value={payment}/>
+								<input type="text" name="payment" className="form-control" placeholder="Payment" value={this.state.payment}  onChange={this.handleInputChange}/>
 							</div>
 							<div className="form-group">
 								<label>Rest</label>
-								<input type="text" className="form-control" placeholder="Rest" value={rest}/>
+								<input type="text" name="rest" className="form-control" placeholder="Rest" value={this.state.rest} onChange={this.handleInputChange}/>
 							</div>
 							<div className="form-group">
 								<label>Expired date</label>
-								<input type="date" className="form-control" placeholder="Expired date" value={expiredDate}/>
+								<UiDatepicker
+									type="text"
+									name="expired"
+									id="finishdate"
+									maxRestrict="#startdate"
+									placeholder="Expired date"
+									data-date-format="dd/mm/yy"
+									className="form-control"
+									value={this.state.expired}
+									onChange={e =>
+										this.setState({ expired: e.target.value })
+									}
+									/>
 							</div> 
 							<div className="btn-group">
-								<button type="submit" className="btn btn-primary">Lưu</button>&nbsp;&nbsp;
-								<button className="btn btn-default">Đóng</button>
+								<button type="button" onClick={()=>this.onUpdateDebt(data.id)} className="btn btn-primary">Lưu</button>&nbsp;&nbsp;
+								<button type="button" className="btn btn-default" onClick={this.handleClose}>Đóng</button>
 							</div>
-						</form>						
+						</form>											
 					</Modal.Body>
 				</Modal>
 			</div>

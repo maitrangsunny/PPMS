@@ -226,7 +226,7 @@ class WidgetList extends Component {
       nextProps.actions.product.setFlagUpdateProduct(true);
       this.setState({
         loading: false,
-      });
+	});
       this.props.actions.authenticate.getAllProduct(this.props.storage.token);
     }
     if (

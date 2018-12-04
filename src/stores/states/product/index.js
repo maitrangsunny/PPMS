@@ -36,7 +36,16 @@ export default keymirror(
     THONG_KE_SUCCESS: null,
 
     ADMIN_DELETE_PRODUCT: null,
-    ADMIN_DELETE_PRODUCT_SUCCESS: null,
+	ADMIN_DELETE_PRODUCT_SUCCESS: null,
+	
+	DEBT_LIST: null,
+    DEBT_LIST_SUCCESS: null,
+
+    DETAIL_DEBT: null,
+    DETAIL_DEBT_SUCCESS: null,
+
+	UPDATE_DEBT: null,
+	UPDATE_DEBT_SUCCESS: null,
 
     SET_FLAG_SHORT_BILL: null,
     SET_FLAG_SUBMIT_BILL: null,
@@ -45,13 +54,12 @@ export default keymirror(
     SET_FLAG_LIST_PENDING: null,
     SET_FLAG_ADD_PENDING: null,
     SET_FLAG_DELETE_PENDING: null,
-    SET_FLAG_UPDATE_PRODUCT: null,
+	SET_FLAG_UPDATE_PRODUCT: null,
+	
+	SET_FLAG_UPDATE_DEBT: null,
 
-    DEBT_LIST: null,
-    DEBT_LIST_SUCCESS: null,
-
-    DETAIL_DEBT: null,
-    DETAIL_DEBT_SUCCESS: null,
+    
+    
   },
   "PRODUCT_"
 );
