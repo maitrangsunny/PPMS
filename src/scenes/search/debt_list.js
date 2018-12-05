@@ -3,7 +3,6 @@ import {Modal, Button, Panel} from "react-bootstrap";
 import Connect from '../../stores/connect';
 import JarvisWidget from '../../components/jarvis_widget';
 import Loading from '../../components/loading';
-import serialize from 'form-serialize';
 import UiDatepicker from "../../components/forms/date_picker";
 import Moment from 'moment';
 import _ from 'lodash';
@@ -76,9 +75,8 @@ class DebtList extends Component {
 
 	handleInputChange = event => {
 		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const name = target.name;	
-		console.log(name+'==='+value);
+		const value = target.type === 'checkbox' ? target.checked : target.validity.valid? target.value : "";
+		const name = target.name;			
 		this.setState({
 		  [name]: value
 		});
@@ -176,11 +174,7 @@ class DebtList extends Component {
 															onClick={()=>this.showDetail(item.id)}>
 															Chi tiết
 														</button>
-														<button
-															type="button"
-															className="btn btn-success">
-															Xóa
-														</button>
+														
 													</td>						
 												</tr>
 											)
@@ -217,14 +211,29 @@ class DebtList extends Component {
 							</tbody>
 						</table>
 						</div>
+						<h4>Chỉnh sửa công nợ</h4>
+						<hr/>
 						<form id="attributeForm">
 							<div className="form-group">
 								<label>Payment</label>
-								<input type="text" name="payment" className="form-control" placeholder="Payment" value={this.state.payment}  onChange={this.handleInputChange}/>
+								<input 
+								type="text" 
+								name="payment" 
+								className="form-control"
+								placeholder="Payment" 
+								pattern="[0-9]*"
+								value={this.state.payment}  
+								onChange={this.handleInputChange}/>
 							</div>
 							<div className="form-group">
 								<label>Rest</label>
-								<input type="text" name="rest" className="form-control" placeholder="Rest" value={this.state.rest} onChange={this.handleInputChange}/>
+								<input type="text" 
+									name="rest" 
+									className="form-control" 
+									placeholder="Rest" 
+									pattern="[0-9]*"
+									value={this.state.rest} 
+									onChange={this.handleInputChange}/>
 							</div>
 							<div className="form-group">
 								<label>Expired date</label>
@@ -236,6 +245,7 @@ class DebtList extends Component {
 									placeholder="Expired date"
 									data-date-format="dd/mm/yy"
 									className="form-control"
+									pattern="[0-9]*"
 									value={this.state.expired}
 									onChange={e =>
 										this.setState({ expired: e.target.value })

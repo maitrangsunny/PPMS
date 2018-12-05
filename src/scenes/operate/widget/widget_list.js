@@ -97,13 +97,12 @@ class WidgetList extends Component {
       idBillSuccess: 0,
       selectItem: null,
       listOutlet: [],
-
       soluongEdit: 0,
-	  giaEdit: 0,
+	    giaEdit: 0,
 
-	  payment: 1,
-	  rest: 1,
-	  dateExpired: ""
+      payment: 1,
+      rest: 1,
+      dateExpired: ""
     };
     this.submitDonThuoc = this.submitDonThuoc.bind();
     this.submitBill = this.submitBill.bind();
@@ -686,11 +685,12 @@ class WidgetList extends Component {
                         type="text"
                         name="payment"
                         placeholder="Payment"
-                        id="txtPayment"                       
-						value={this.state.payment}     
-						// onKeyDown={this.handleKeyDown} 
+                        id="txtPayment"    
+                        pattern="[0-9]*"                   
+                        value={this.state.payment}     
+                        // onKeyDown={this.handleKeyDown} 
                         onChange={e =>
-                          this.setState({ payment: e.target.value })
+                          this.setState({ payment: e.target.validity.valid?e.target.value:""})
                         }             
                       />
                     </label>
@@ -698,15 +698,16 @@ class WidgetList extends Component {
                   <div className="col col-md-4 col-sm-4 col-xs-4">
                     <label className="input">
                       <h3>Rest:</h3>
-					  <input
+					              <input
                         type="text"
                         name="rest"
                         placeholder="Rest"
-                        id="txtRest"                        
-						value={this.state.rest}     
-						onChange={e =>
-							this.setState({ rest: e.target.value })
-						}                    
+                        id="txtRest"           
+                        pattern="[0-9]*"              
+                        value={this.state.rest}     
+                        onChange={e =>
+                          this.setState({ rest: e.target.validity.valid?e.target.value:"" })
+                        }                    
                       />
                     </label>
                   </div>
