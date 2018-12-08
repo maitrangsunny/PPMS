@@ -422,10 +422,6 @@ class WidgetList extends Component {
         );
       }
 	}
-		 
-	if ((!e.shiftKey && (e.keyCode < 48 || e.keyCode > 57)) || (e.keyCode < 96 || e.keyCode > 105)) {
-		e.preventDefault();
-	}
   };
 
   submitDonThuoc = () => {
@@ -698,7 +694,7 @@ class WidgetList extends Component {
                   <div className="col col-md-4 col-sm-4 col-xs-4">
                     <label className="input">
                       <h3>Rest:</h3>
-					              <input
+					    <input
                         type="text"
                         name="rest"
                         placeholder="Rest"
@@ -799,7 +795,7 @@ class WidgetList extends Component {
                         }}
                         onKeyDown={this.handleKeyDown}
                         onFocus={this.onCreditCardFocus}
-                        // onFocus={() => this.checkThemThuocMoi()}
+                        //onFocus={() => this.checkThemThuocMoi()}
                         // onBlur={() => this.checkThemThuocMoi()}
                         onChange={e => {
                           this.setState({
