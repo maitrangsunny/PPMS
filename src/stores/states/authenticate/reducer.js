@@ -13,7 +13,7 @@ const INIT_STATE = {
   addCustomer: [],
   detailCustomer: [],
   editOrder: [],
-  addOutlet: [],
+  updateOutlet: [],
   listOutlet: [],
   register: [],
 
@@ -194,10 +194,10 @@ export default createReducer(INIT_STATE, {
     };
   },
 
-  [Types.ADD_OUTLET_SUCCESS]: (state, action) => {
+  [Types.UPDATE_OUTLET_SUCCESS]: (state, action) => {
     return {
       ...state,
-      addOutlet: action.response,
+      updateOutlet: action.response,
     };
   },
 

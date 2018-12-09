@@ -25,7 +25,7 @@ class StockList extends Component {
 				listOutlet: nextProps.authenticate.listOutlet.data,
 				loading: false,
 			});
-		}
+		}	
 	}
 
 	render() {
@@ -68,7 +68,9 @@ class StockList extends Component {
 												<td>{item.name}</td>	
 												<td>{item.stock_balance}</td>									
 												<td>
-													<label className={`${item.is_enable===1 ?'label label-success' : 'label label-warning'}`}>{`${item.is_enable === 1 ? "còn hàng" : "hết hàng"}`}</label>
+													<label className={`${item.stock_balance>=100?'label label-primary':`${item.stock_balance<100 && item.stock_balance>0?'label label-warning':'label label-danger'}`}`}>
+													{`${item.stock_balance>=100?'Còn hàng':`${item.stock_balance<100 && item.stock_balance>0?'hàng sắp hết':'nhập hàng gấp'}`}`}
+													</label>
 												</td>
 											</tr>
 										)

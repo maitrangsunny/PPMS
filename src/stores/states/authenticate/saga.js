@@ -53,9 +53,9 @@ function* editOrder(action) {
   yield put({ ...action, type: Types.EDIT_ORDER_SUCCESS, response });
 }
 
-function* addOutlet(action) {
+function* updateOutlet(action) {
   let response = yield call(API.request, action.payload);
-  yield put({ ...action, type: Types.ADD_OUTLET_SUCCESS, response });
+  yield put({ ...action, type: Types.UPDATE_OUTLET_SUCCESS, response });
 }
 
 function* listOutlet(action) {
@@ -140,7 +140,7 @@ export default function* saga() {
     yield takeLatest(Types.ADD_USER, addUser),
     yield takeLatest(Types.REGISTER, register),
     yield takeLatest(Types.LIST_OUTLET, listOutlet),
-    yield takeLatest(Types.ADD_OUTLET, addOutlet),
+    yield takeLatest(Types.UPDATE_OUTLET, updateOutlet),
     yield takeLatest(Types.EDIT_ORDER, editOrder),
     yield takeLatest(Types.DETAIL_CUSTOMER, detailCustomer),
     yield takeLatest(Types.ADD_CUSTOMER, addCustomer),

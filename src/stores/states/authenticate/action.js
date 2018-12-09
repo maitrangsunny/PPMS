@@ -30,17 +30,15 @@ export function register(data) {
   };
 }
 
-export function addOutlet(token, data) {
-	console.log("data", data)
+export function updateOutlet(token, id, soluong) {
 	return {
-		type: Types.ADD_OUTLET,
+		type: Types.UPDATE_OUTLET,
 		payload: {
 			token: token,
-			api: Configs.API + "outlet-product",
-			method: "POST",
-			payload: {
-				name: data.ten,
-				stock_balance: data.soluong,
+			api: Configs.API + "outlet-product/"+id,
+			method: "PUT",
+			payload: {			
+				stock_balance : soluong      
 			},
 		},
 	};
@@ -51,7 +49,7 @@ export function listOutler(token) {
     type: Types.LIST_OUTLET,
     payload: {
       token: token,
-      api: Configs.API + "outlet-product",
+      api: Configs.API + "outlet-product/stock",
       method: "GET",
     },
   };

@@ -32,8 +32,8 @@ export default keymirror(
     EDIT_ORDER: null,
     EDIT_ORDER_SUCCESS: null,
 
-    ADD_OUTLET: null,
-    ADD_OUTLET_SUCCESS: null,
+    UPDATE_OUTLET: null,
+    UPDATE_OUTLET_SUCCESS: null,
 
     LIST_OUTLET: null,
     LIST_OUTLET_SUCCESS: null,
