@@ -256,8 +256,8 @@ class SearchCart extends Component {
                   </div>
                 </div>
               </form>
-              <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-                <ul id="sparks" className="">
+              <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul id="sparks" style={{textAlign: 'center', marginBottom: '10px'}}>
                   <li className="sparks-info">
                     <button
                       onClick={() => this.locData()}
@@ -303,9 +303,9 @@ class SearchCart extends Component {
                               <th>{this.getTime(item.delivery_date)}</th>
                               <th>{item.phone}</th>
                               <th>{item.note}</th>
-                              <th>
+                              <th style={{whiteSpace:'nowrap'}}>
                                 <button
-                                  className="btn btn-success col-xs-offset-2"
+                                  className="btn btn-success"
                                   type="button"
                                   onClick={() => this.detailOrder(item.id)}
                                 >
@@ -323,8 +323,10 @@ class SearchCart extends Component {
                                   Chi Tiết
                                 </button> */}
                                 <Link
-                                  className="btn btn-info col-xs-offset-2"
-                                  to={Utils.link(LINK.WIDGET, item.id)}
+								  className="btn btn-info"
+								  style={{marginLeft: '5px'}}
+								  to={Utils.link(LINK.WIDGET, item.id)
+									}
                                 >
                                   Chỉnh sửa
                                 </Link>
@@ -348,27 +350,23 @@ class SearchCart extends Component {
           style={{
             overlay: {
               position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
               backgroundColor: "rgba(0, 0, 0, 0.75)",
               alignSelf: "center",
             },
             content: {
               position: "absolute",
-              top: "10%",
-              left: "30%",
+              top: "50%",
+              left: "50%",
               right: "auto",
               bottom: "auto",
-              marginRight: "-50%",
               border: "1px solid #ccc",
               background: "#fff",
               overflow: "auto",
               WebkitOverflowScrolling: "touch",
               borderRadius: "4px",
               outline: "none",
-              padding: "20px",
+			  padding: "20px",
+			  transform: "translate(-50%, -50%)"
             },
           }}
           contentLabel="Example Modal"
@@ -415,7 +413,7 @@ class SearchCart extends Component {
               {this.format2(parseInt(this.state.data.amount), "VND")}
             </h2>
             <Link
-              className="btn btn-info col-xs-offset-2"
+              className="btn btn-info col-xs-offset-4"
               to={Utils.link(LINK.PRINT, this.state.idDetail)}
             >
               In Đơn Hàng

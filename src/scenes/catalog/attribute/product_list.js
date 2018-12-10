@@ -134,8 +134,8 @@ class ProductList extends Component {
                         </div>
                     </div>
                 </JarvisWidget>
-                <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-                    <ul id="sparks" className="">
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul id="sparks" className="" style={{textAlign:'center'}}>
                         <li className="sparks-info">
                             <button onClick={() => this.submitCustomer()} type="button" className="btn btn-success btn-lg">
                                 Tạo mới

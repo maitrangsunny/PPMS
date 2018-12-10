@@ -138,50 +138,52 @@ class DebtList extends Component {
 					</header>
 					<div>
 						<div className="widget-body no-padding">
-							<div className="table-responsive">
-							<table className="table table-bordered table-striped table-hover">
-								<thead>
-								<tr>
-									<th>STT</th>
-									<th>Tên Khách Hàng</th>
-									<th>Địa chỉ</th>
-									<th>Payment</th>
-									<th>Rest</th>
-									<th>Expired</th>
-									<th>Tình trạng</th>
-									<th>Chi tiết</th>								
-								</tr>
-								</thead>
-								<tbody>
-									{ list && list.length > 0 ? list.map((item, index)=>
-										{
-											let dayValue = this.changeStatusDate(item.expired);
-											return (
-												<tr key={index}>
-													<td>{index + 1}</td>
-													<td>{item.order.name}</td>
-													<td>{item.order.address}</td>
-													<td>{parseInt(item.payment).toLocaleString('en')}</td>
-													<td>{parseInt(item.rest).toLocaleString('en')}</td>	
-													<td>{Moment(item.expired * 1000).format('DD-MM-YYYY')}</td>	
-													<td>
-														<label className={`${dayValue===3?'label label-danger':`${dayValue===6?'label label-warning':'label label-primary'}`}`}>Sắp thu</label>
-													</td>
-													<td>
-														<button
-															type="button"
-															className="btn btn-info" 
-															onClick={()=>this.showDetail(item.id)}>
-															Chi tiết
-														</button>
-														
-													</td>						
-												</tr>
-											)
-										}) :null
-									}
-								</tbody>
-							</table>
+							<div className="custom-table-bill">
+								<div className="table-responsive">
+									<table className="table table-bordered table-striped table-hover">
+										<thead>
+										<tr>
+											<th>STT</th>
+											<th>Tên Khách Hàng</th>
+											<th>Địa chỉ</th>
+											<th>Payment</th>
+											<th>Rest</th>
+											<th>Expired</th>
+											<th>Tình trạng</th>
+											<th>Chi tiết</th>								
+										</tr>
+										</thead>
+										<tbody>
+											{ list && list.length > 0 ? list.map((item, index)=>
+												{
+													let dayValue = this.changeStatusDate(item.expired);
+													return (
+														<tr key={index}>
+															<td>{index + 1}</td>
+															<td>{item.order.name}</td>
+															<td>{item.order.address}</td>
+															<td>{parseInt(item.payment).toLocaleString('en')}</td>
+															<td>{parseInt(item.rest).toLocaleString('en')}</td>	
+															<td>{Moment(item.expired * 1000).format('DD-MM-YYYY')}</td>	
+															<td>
+																<label className={`${dayValue===3?'label label-danger':`${dayValue===6?'label label-warning':'label label-primary'}`}`}>Sắp thu</label>
+															</td>
+															<td>
+																<button
+																	type="button"
+																	className="btn btn-info" 
+																	onClick={()=>this.showDetail(item.id)}>
+																	Chi tiết
+																</button>
+																
+															</td>						
+														</tr>
+													)
+												}) :null
+											}
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>

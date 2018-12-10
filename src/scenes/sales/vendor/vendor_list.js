@@ -56,7 +56,7 @@ class VendorList extends Component {
             <div className="widget-body no-padding">
               <form className="smart-form" id="search">
                 <fieldset>
-                  <section className="col col-4">
+                  <section className="col col-6">
                     <label className="input">
                       <input
                         type="text"
@@ -68,7 +68,7 @@ class VendorList extends Component {
                       />
                     </label>
                   </section>
-                  <section className="col col-4">
+                  <section className="col col-6">
                     <label className="select">
                       <select
                         className="form-control"
@@ -86,12 +86,13 @@ class VendorList extends Component {
                     </label>
                   </section>
                 </fieldset>
-                <footer>
+                <footer style={{textAlign:'center'}}>
                   <Link
                     to={Utils.link(LINK.VENDOR, "danh-sach", {
                     })}
                     type="submit"
                     className="btn btn-primary"
+                    style={{float: 'none'}}
                   >
                     Tìm kiếm
                   </Link>

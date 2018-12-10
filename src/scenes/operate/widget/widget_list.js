@@ -903,20 +903,15 @@ class WidgetList extends Component {
           style={{
             overlay: {
               position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
               backgroundColor: "rgba(0, 0, 0, 0.75)",
               alignSelf: "center",
             },
             content: {
               position: "absolute",
-              top: "10%",
-              left: "40%",
+              top: "50%",
+              left: "50%",
               right: "auto",
               bottom: "auto",
-              marginRight: "-50%",
               border: "1px solid #ccc",
               background: "#fff",
               overflow: "auto",
@@ -924,6 +919,7 @@ class WidgetList extends Component {
               borderRadius: "4px",
               outline: "none",
               padding: "20px",
+              transform: "translate(-50%, -50%)"
             },
           }}
           contentLabel="Example Modal"
@@ -967,7 +963,7 @@ class WidgetList extends Component {
               {this.format2(parseInt(this.state.tongtien), "VND")}
             </h2>
             <Link
-              className="btn btn-info col-xs-offset-2"
+              className="btn btn-info col-xs-offset-4"
               to={Utils.link(LINK.PRINT, this.state.idBillSuccess)}
             >
               In Đơn Hàng

@@ -49,6 +49,7 @@ class StockList extends Component {
 				</header>
 				<div>
 					<div className="widget-body no-padding">
+						<div className="custom-table-bill">
 						<div className="table-responsive">
 						<table className="table table-bordered table-striped table-hover">
 							<thead>
@@ -79,6 +80,8 @@ class StockList extends Component {
 							</tbody>
 						</table>
 						</div>
+						</div>
+						
 					</div>
 				</div>
 			</JarvisWidget>
