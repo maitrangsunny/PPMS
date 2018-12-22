@@ -66,7 +66,7 @@ class StockList extends Component {
 										return (
 											<tr key = {index}>
 												<td>{index + 1}</td>
-												<td>{item.name}</td>	
+												<td><a href="/sales/stock/add">{item.name}</a></td>	
 												<td>{item.stock_balance}</td>									
 												<td>
 													<label className={`${item.stock_balance>=100?'label label-primary':`${item.stock_balance<100 && item.stock_balance>0?'label label-warning':'label label-danger'}`}`}>

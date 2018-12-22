@@ -3,13 +3,11 @@ import Modal from "react-modal";
 import Connect from "../../../stores/connect";
 import JarvisWidget from "../../../components/jarvis_widget";
 import SuggesEditext from "../../../components/suggestCustomer";
-import Paginate from "../../../components/paginate";
 import Autosuggest from "react-autosuggest";
 import UiDatepicker from "../../../components/forms/date_picker";
 import Loading from "../../../components/loading";
 import Utils, { BIGBOX, LINK } from "../../../utils";
 import { Link } from "react-router-dom";
-import index from "../../../stores/states/authenticate/index";
 import Cleave from "cleave.js/react";
 const theme = {
   container: {
@@ -96,10 +94,8 @@ class WidgetList extends Component {
       idCustomer: 0,
       idBillSuccess: 0,
       selectItem: null,
-      listOutlet: [],
       soluongEdit: 0,
-	    giaEdit: 0,
-
+      giaEdit: 0,
       payment: 1,
       rest: 1,
       dateExpired: ""
@@ -107,7 +103,7 @@ class WidgetList extends Component {
     this.submitDonThuoc = this.submitDonThuoc.bind();
     this.submitBill = this.submitBill.bind();
     this.openModal = this.openModal.bind();
-	this.handleKeyDown = this.handleKeyDown.bind();
+    this.handleKeyDown = this.handleKeyDown.bind();
     this.onForCus = this.onForCus.bind();
   }
 
@@ -126,20 +122,11 @@ class WidgetList extends Component {
     return new Array(width - s.toString().length + 1).join(character) + s;
   }
 
-  validateNumberField(val) {
-	var pattern = /^([0-9]\d*)?$/;
-	// reg = /^\d+$/;
-	return pattern.test(val);
-  }
-
   async componentWillMount() {
     await this.props.actions.authenticate.getAllCustomer(
       this.props.storage.token
     );
     await this.props.actions.authenticate.getAllProduct(
-      this.props.storage.token
-    );
-    await this.props.actions.authenticate.listOutler(
       this.props.storage.token
     );
     if (this.props.id) {
@@ -162,7 +149,7 @@ class WidgetList extends Component {
         bill: this.props.storage.dataProduct.po_product || [],
         idCustomer: this.props.storage.dataProduct.id || 0,
         tongtien: this.props.storage.dataProduct.tongtien || 0,
-		dateCustomer: this.props.storage.dataProduct.date || "",
+        dateCustomer: this.props.storage.dataProduct.date || "",
       });
     }
   }
@@ -173,8 +160,7 @@ class WidgetList extends Component {
       nextProps.authenticate.detailOrder.status == 200 &&
       !nextProps.authenticate.flagDetailBill
     ) {
-	  let data = nextProps.authenticate.detailOrder.data;
-	  
+      let data = nextProps.authenticate.detailOrder.data;
       await this.setState({
         noteCustomer: data.note,
         addressCustomer: data.address,
@@ -193,14 +179,6 @@ class WidgetList extends Component {
     ) {
       this.setState({
         listCustomer: nextProps.authenticate.allCustomer.data,
-      });
-    }
-    if (
-      nextProps.authenticate.listOutlet &&
-      nextProps.authenticate.listOutlet.status == 200
-    ) {
-      this.setState({
-        listOutlet: nextProps.authenticate.listOutlet.data,
       });
     }
     if (
@@ -225,8 +203,8 @@ class WidgetList extends Component {
       nextProps.actions.product.setFlagUpdateProduct(true);
       this.setState({
         loading: false,
-	});
-      this.props.actions.authenticate.getAllProduct(this.props.storage.token);
+      });
+      // this.props.actions.authenticate.getAllProduct(this.props.storage.token);
     }
     if (
       nextProps.product.editBill &&
@@ -312,7 +290,7 @@ class WidgetList extends Component {
       tongtien: this.state.tongtien,
       note: this.state.noteCustomer,
       po_product: this.state.bill,
-	  date: this.state.dateCustomer,
+      date: this.state.dateCustomer,
     };
     this.setState({ nameCustomer: this._inputName.value });
     this.props.actions.storage.setListBill(data);
@@ -326,14 +304,13 @@ class WidgetList extends Component {
         this.state.addressCustomer,
         "",
         this.state.phoneCustomer,
-		this.state.noteCustomer,		
+        this.state.noteCustomer
       );
       this.setState({ idCustomer: null });
     }
   }
 
   submitBill = () => {
-	  console.log(this.props);
     this.setState({ loading: true });
     this.props.actions.product.submitBill(
       this.props.storage.token,
@@ -344,10 +321,10 @@ class WidgetList extends Component {
       this.state.tongtien + "",
       this.state.noteCustomer,
       this.state.phoneCustomer,
-	  this.state.bill,
-	  this.state.payment,
-	  this.state.rest,
-	  this.state.dateExpired
+      this.state.bill,
+      this.state.payment,
+      this.state.rest,
+      this.state.dateExpired
     );
   };
 
@@ -371,15 +348,11 @@ class WidgetList extends Component {
       if (this.state.gia == "") {
         alert("Giá không để trống");
         return;
-	  }
-	  if(this.state.payment == "" || this.state.rest == ""){
-		alert("Vui lòng nhập giá trị!");
-		return;
-		}
+      }
       if (this.state.soluong == "") {
         alert("Số lượng không để trống");
         return;
-	  } else {
+      } else {
         this.setState({ tenthuoc: this._input.value });
         this.props.actions.product.updateProduct(
           this.props.storage.token,
@@ -421,11 +394,10 @@ class WidgetList extends Component {
           1000
         );
       }
-	}
+    }
   };
 
   submitDonThuoc = () => {
-	  console.log("submitDonThuoc",this.props)
     if (this.state.gia == "") {
       alert("Giá không để trống");
       return;
@@ -447,7 +419,7 @@ class WidgetList extends Component {
         amount: parseInt(this.state.soluong) * parseInt(this.state.gia),
         note: this.state.ghichu,
       };
-	  this.checkThemThuocMoi();
+      this.checkThemThuocMoi();
       let tong = parseInt(thuoc.amount);
       let array = this.state.bill.slice();
       array.push(thuoc);
@@ -490,7 +462,7 @@ class WidgetList extends Component {
         this.state.soluong
       );
 
-      this.props.actions.authenticate.getAllProduct(this.props.storage.token);
+      // this.props.actions.authenticate.getAllProduct(this.props.storage.token);
     }
   }
 
@@ -586,7 +558,7 @@ class WidgetList extends Component {
                 <div className="row input-order">
                   <div className="col col-md-4 col-sm-4 col-xs-4">
                     <label className="input">
-                      <h3>Tên khách hàng:</h3>
+                      <h3>Tên khách hàng :</h3>
                       <SuggesEditext
                         dataReturn={data => this.dataReturn(data)}
                         languages={this.state.listCustomer}
@@ -672,59 +644,60 @@ class WidgetList extends Component {
                       />
                     </label>
                   </div>
+				</div>
+                  <div className="row input-order">
+					<div className="col col-md-4 col-sm-4 col-xs-4">
+						<label className="input">
+						<h3>Payment:</h3>
+						<input
+							type="text"
+							name="payment"
+							placeholder="Payment"
+							id="txtPayment"    
+							pattern="[0-9]*"                   
+							value={this.state.payment}     
+							// onKeyDown={this.handleKeyDown} 
+							onChange={e =>
+							this.setState({ payment: e.target.validity.valid?e.target.value:""})
+							}             
+						/>
+						</label>
+					</div>
+					
+					<div className="col col-md-4 col-sm-4 col-xs-4">
+						<label className="input">
+						<h3>Rest:</h3>
+						<input
+							type="text"
+							name="rest"
+							placeholder="Rest"
+							id="txtRest"           
+							pattern="[0-9]*"              
+							value={this.state.rest}     
+							onChange={e =>
+							this.setState({ rest: e.target.validity.valid?e.target.value:"" })
+							}                    
+						/>
+						</label>
+					</div>
+					<div className="col col-md-4 col-sm-4 col-xs-4">
+						<label className="input">
+						<h3>Expired :</h3>
+						<UiDatepicker
+							type="text"
+							name="dateExpired"
+							id="dateExpired"
+							maxRestrict="#startdate"
+							placeholder="Expired"
+							data-date-format="dd/mm/yy"
+							value={this.state.dateExpired}
+							onChange={e =>
+							this.setState({ dateExpired: e.target.value })
+							}
+						/>
+						</label>
+					</div>
                 </div>
-				<div className="row input-order">
-                  <div className="col col-md-4 col-sm-4 col-xs-4">
-                    <label className="input">
-                      <h3>Payment:</h3>
-                      <input
-                        type="text"
-                        name="payment"
-                        placeholder="Payment"
-                        id="txtPayment"    
-                        pattern="[0-9]*"                   
-                        value={this.state.payment}     
-                        // onKeyDown={this.handleKeyDown} 
-                        onChange={e =>
-                          this.setState({ payment: e.target.validity.valid?e.target.value:""})
-                        }             
-                      />
-                    </label>
-                  </div>
-                  <div className="col col-md-4 col-sm-4 col-xs-4">
-                    <label className="input">
-                      <h3>Rest:</h3>
-					    <input
-                        type="text"
-                        name="rest"
-                        placeholder="Rest"
-                        id="txtRest"           
-                        pattern="[0-9]*"              
-                        value={this.state.rest}     
-                        onChange={e =>
-                          this.setState({ rest: e.target.validity.valid?e.target.value:"" })
-                        }                    
-                      />
-                    </label>
-                  </div>
-                  <div className="col col-md-4 col-sm-4 col-xs-4">
-                    <label className="input">
-                      <h3>Expired :</h3>
-                      <UiDatepicker
-                        type="text"
-                        name="dateExpired"
-                        id="dateExpired"
-                        maxRestrict="#startdate"
-                        placeholder="Expired"
-                        data-date-format="dd/mm/yy"
-                        value={this.state.dateExpired}
-                        onChange={e =>
-                          this.setState({ dateExpired: e.target.value })
-                        }
-                      />
-                    </label>
-                  </div>
-                </div>				
               </form>
             </div>
           </div>
@@ -795,7 +768,7 @@ class WidgetList extends Component {
                         }}
                         onKeyDown={this.handleKeyDown}
                         onFocus={this.onCreditCardFocus}
-                        //onFocus={() => this.checkThemThuocMoi()}
+                        // onFocus={() => this.checkThemThuocMoi()}
                         // onBlur={() => this.checkThemThuocMoi()}
                         onChange={e => {
                           this.setState({
@@ -843,7 +816,6 @@ class WidgetList extends Component {
             </div>
           </div>
         </JarvisWidget>
-
         {
           <JarvisWidget editbutton={false} color="darken">
             <header>
@@ -900,7 +872,7 @@ class WidgetList extends Component {
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={{
+		  style={{
             overlay: {
               position: "fixed",
               backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -963,7 +935,7 @@ class WidgetList extends Component {
               {this.format2(parseInt(this.state.tongtien), "VND")}
             </h2>
             <Link
-              className="btn btn-info col-xs-offset-4"
+              className="btn btn-info col-xs-offset-2"
               to={Utils.link(LINK.PRINT, this.state.idBillSuccess)}
             >
               In Đơn Hàng
@@ -1037,7 +1009,7 @@ class WidgetList extends Component {
 
           <button
             type="button"
-            className="btn btn-warning col-xs-offset-1"
+			className="btn btn-warning col-xs-offset-1"
             onClick={() => this.selectEdit(index, item, "edit")}
           >
             Chỉnh sửa
