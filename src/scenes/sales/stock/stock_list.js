@@ -3,12 +3,73 @@ import React, { Component } from 'react';
 import Connect from '../../../stores/connect';
 import JarvisWidget from '../../../components/jarvis_widget';
 import Loading from '../../../components/loading';
+import { Link } from "react-router-dom";
+import Utils, { LINK } from "../../../utils";
+import Autosuggest from "react-autosuggest";
+
+const theme = {
+	container: {
+	  position: "relative",
+	},
+	input: {
+	  height: 30,
+	  fontFamily: "Helvetica, sans-serif",
+	  fontWeight: 500,
+	  fontSize: 16,
+	  border: "1px solid #aaa",
+	},
+	inputFocused: {
+	  outline: "none",
+	},
+	inputOpen: {
+	  borderBottomLeftRadius: 0,
+	  borderBottomRightRadius: 0,
+	},
+	suggestionsContainer: {
+	  display: "none",
+	},
+	suggestionsContainerOpen: {
+	  display: "block",
+	  position: "absolute",
+	  top: 51,
+	  width: 280,
+	  border: "1px solid #aaa",
+	  backgroundColor: "#fff",
+	  fontFamily: "Helvetica, sans-serif",
+	  fontWeight: 300,
+	  fontSize: 16,
+	  maxHeight: 200,
+	  borderBottomLeftRadius: 4,
+	  borderBottomRightRadius: 4,
+	  zIndex: 2,
+	  overflow: "auto",
+	},
+	suggestionsList: {
+	  margin: 0,
+	  padding: 0,
+	  listStyleType: "none",
+	},
+	suggestion: {
+	  cursor: "pointer",
+	  padding: "10px 20px",
+	},
+	suggestionHighlighted: {
+	  backgroundColor: "#ddd",
+	},
+  };
+  
+
+const getSuggestionValue = suggestion => suggestion.name;
+const renderSuggestion = suggestion => <span>{suggestion.name}</span>;
+
 class StockList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			loading: false,
-			listOutlet: []
+			listOutlet: [],
+			suggestions: [],
+			value: "",
 		};
 	}
 
@@ -28,15 +89,119 @@ class StockList extends Component {
 		}	
 	}
 
+	onSuggestionsFetchRequested = ({ value }) => {
+		this.setState({
+		  suggestions: this.getSuggestions(value),
+		});
+	  };
+	
+	onSuggestionsClearRequested = () => {
+		this.setState({
+		  suggestions: [],
+		});
+	};
+
+	getSuggestions = value => {
+		const languages = this.props.authenticate.allProduct.data;
+		const inputValue = value.trim().toLowerCase();
+		const inputLength = inputValue.length;
+	
+		return inputLength === 0
+		  ? []
+		  : languages.filter(
+			  lang => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+			);
+	  };
+	
+	onSuggestionSelected = (
+		event,{ suggestion }
+	  ) => {
+		this.setState({
+			id: suggestion.id,
+			ten: suggestion.name,
+		});
+	};
+
+	onChange = (event, { newValue }) => {
+		this.setState({
+		  value: newValue,
+		});
+	};
+
+	onSubmitSearch = (e) =>{
+	    console.log(1);	
+        let searchList = this.state.listOutlet.filter((el) => {
+          let searchValue = el.name;
+          return searchValue.indexOf(this.state.value) !== -1;
+        })
+		this.setState({
+			listOutlet: searchList
+		});
+	}
+
 	render() {
-		var {listOutlet} = this.state;
+		var {listOutlet, suggestions, value} = this.state;
 		// var sortList = this.state.listOutlet.sort((a, b) => (b.id - a.id))
+		const inputProps = {
+			placeholder: "Tên thuốc",
+			value,
+			onChange: this.onChange,
+		};
 		return (
 		<div className="panel">
 			<Loading loading={this.state.loading} />
 			<div className="panel panel-heading">
-				<h1>Quản lý kho chứa</h1>
+				<h1 className="page-title txt-color-blueDark">Quản lý kho chứa</h1>
+				<JarvisWidget editbutton={false} custombutton={false}>
+				<header>
+					<span className="widget-icon">				
+						<i className="fa fa-search" />{'Tìm Tên Thuốc'}
+					</span>
+				</header>
+				<div>
+					{/* widget content */}
+					<div className="widget-body no-padding">
+					<form className="smart-form" id="search">
+						<fieldset>
+						<div className="form-group">
+							<label className="col-lg-3 control-label">Tên thuốc</label>
+							<div className="col-lg-7">
+							<label className="input">
+							<Autosuggest
+								suggestions={suggestions}
+								onSuggestionsFetchRequested={
+								this.onSuggestionsFetchRequested
+								}
+								onSuggestionsClearRequested={
+								this.onSuggestionsClearRequested
+								}
+								getSuggestionValue={getSuggestionValue}
+								renderSuggestion={renderSuggestion}
+								inputProps={inputProps}
+								theme={theme}
+								highlightFirstSuggestion={true}
+								onSuggestionSelected={this.onSuggestionSelected}
+								renderInputComponent={inputProps => (
+								<input {...inputProps} ref={c => (this._input = c)}/>
+								)}
+                     		 />
+							</label>							
+							</div>
+							</div>					
+						</fieldset>
+						<footer style={{textAlign:'center'}}>
+							<button type="button" 
+								class="btn btn-primary" 
+								style={{'float':'none'}}
+								onClick={this.onSubmitSearch}
+							>Tìm kiếm</button>
+						</footer>
+					</form>
+					</div>
+				</div>
+			</JarvisWidget>	
 			</div>
+					
 			<div className="panel panel-body">
 				<JarvisWidget editbutton={false} color="darken">
 				<header>
@@ -66,7 +231,7 @@ class StockList extends Component {
 										return (
 											<tr key = {index}>
 												<td>{index + 1}</td>
-												<td><a href="/sales/stock/add">{item.name}</a></td>	
+												<td>{item.name}</td>	
 												<td>{item.stock_balance}</td>									
 												<td>
 													<label className={`${item.stock_balance>=100?'label label-primary':`${item.stock_balance<100 && item.stock_balance>0?'label label-warning':'label label-danger'}`}`}>

@@ -97,8 +97,16 @@ class StockAdd extends Component {
 		this.props.actions.authenticate.getAllProduct(
 			this.props.storage.token
 		);
+		this.props.actions.authenticate.listOutler(
+			this.props.storage.token
+		);
 	}
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps(nextProps) {	
+		if (nextProps.authenticate.listOutlet && nextProps.authenticate.listOutlet.status == 200) {
+			this.setState({
+				listOutlet: nextProps.authenticate.listOutlet.data
+			});
+		}	
 		if (nextProps.authenticate.updateOutlet && nextProps.authenticate.updateOutlet.status == 200) {
 			this.setState({
 				listOutlet: nextProps.authenticate.listOutlet.data,
@@ -108,6 +116,7 @@ class StockAdd extends Component {
 			});	
 			return;
 		};
+		
 	};
 
 	onSuggestionsFetchRequested = ({ value }) => {
@@ -144,17 +153,32 @@ class StockAdd extends Component {
 	};
 
 	onChange = (event, { newValue }) => {
+		console.log("onchange");
 		this.setState({
 		  value: newValue,
 		});
 	};
 
+	searchHandler = (event) => {
+		console.log("keypress");
+		console.log("list",this.state.listOutlet);
+		let	item = this.state.listOutlet.filter((el) => {
+			  let searchValue = el.name;
+			  return searchValue.indexOf(this.state.value) !== -1;
+			})
+			console.log(item);
+		this.setState({
+		  listOutlet: item
+		})
+	  }
+
 	render() {
-		const { value, suggestions } = this.state;
+		const { listOutlet,value, suggestions } = this.state;
 		const inputProps = {
 			placeholder: "Tên thuốc",
 			value,
 			onChange: this.onChange,
+			onKeyDown: this.searchHandler
 		};
 		const inputQuantityStyle = {
 			padding: '0 10px',
@@ -232,6 +256,27 @@ class StockAdd extends Component {
 							</div>
 							</div>
 						</fieldset> */}
+						<fieldset>
+							<div className="form-group">
+							<label className="col-lg-3 control-label">Số lượng hiện tại</label>
+								{
+									listOutlet && listOutlet.length > 0 ? listOutlet.map((item,index)=>{
+										if(this.state.value == item.name){
+											return (
+												<label key={index} className="col-lg-9 control-label">
+													{/* <span>{`${item.stock_balance?`${item.stock_balance}`:0}`}</span> */}
+													<span>{item.stock_balance}</span>
+													<span className={`${item.stock_balance>=100?'label label-primary':`${item.stock_balance<100 && item.stock_balance>0?'label label-warning':'label label-danger'}`}`}>
+														{`${item.stock_balance>=100?'Còn hàng':`${item.stock_balance<100 && item.stock_balance>0?'hàng sắp hết':'nhập hàng gấp'}`}`}
+													</span>
+												</label>
+											)
+										}
+									}): null
+								}
+								
+							</div>
+						</fieldset>
 						<fieldset>
 							<div className="form-group">
 							<label className="col-lg-3 control-label">Số lượng</label>
