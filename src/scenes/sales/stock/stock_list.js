@@ -128,25 +128,25 @@ class StockList extends Component {
 		});
 	};
 
-	onSubmitSearch = (e) =>{
-	    console.log(1);	
-        let searchList = this.state.listOutlet.filter((el) => {
-          let searchValue = el.name;
-          return searchValue.indexOf(this.state.value) !== -1;
-        })
+	onSubmitSearch = (e) =>{		
+		let searchList = this.props.authenticate.listOutlet.data.filter((el) => {
+			let searchValue = el.name.toLowerCase();
+			return searchValue.search(this.state.value.toLowerCase()) !== -1;
+		})
 		this.setState({
 			listOutlet: searchList
 		});
+		
 	}
 
 	render() {
-		var {listOutlet, suggestions, value} = this.state;
+		var {listOutlet, value} = this.state;
 		// var sortList = this.state.listOutlet.sort((a, b) => (b.id - a.id))
-		const inputProps = {
-			placeholder: "Tên thuốc",
-			value,
-			onChange: this.onChange,
-		};
+		console.log(value);
+		const inputStyle = {
+			padding: '0 10px',
+			boxSizing : 'border-box'
+		}
 		return (
 		<div className="panel">
 			<Loading loading={this.state.loading} />
@@ -166,32 +166,18 @@ class StockList extends Component {
 						<div className="form-group">
 							<label className="col-lg-3 control-label">Tên thuốc</label>
 							<div className="col-lg-7">
-							<label className="input">
-							<Autosuggest
-								suggestions={suggestions}
-								onSuggestionsFetchRequested={
-								this.onSuggestionsFetchRequested
+								<input value={value} className="col-xs-12 form-control" 
+								style={inputStyle}								
+								onChange={e =>
+								  this.setState({ value: e.target.value })
 								}
-								onSuggestionsClearRequested={
-								this.onSuggestionsClearRequested
-								}
-								getSuggestionValue={getSuggestionValue}
-								renderSuggestion={renderSuggestion}
-								inputProps={inputProps}
-								theme={theme}
-								highlightFirstSuggestion={true}
-								onSuggestionSelected={this.onSuggestionSelected}
-								renderInputComponent={inputProps => (
-								<input {...inputProps} ref={c => (this._input = c)}/>
-								)}
-                     		 />
-							</label>							
+								/>							
 							</div>
 							</div>					
 						</fieldset>
 						<footer style={{textAlign:'center'}}>
 							<button type="button" 
-								class="btn btn-primary" 
+								className="btn btn-primary" 
 								style={{'float':'none'}}
 								onClick={this.onSubmitSearch}
 							>Tìm kiếm</button>
