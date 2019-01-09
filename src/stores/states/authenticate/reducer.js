@@ -195,6 +195,7 @@ export default createReducer(INIT_STATE, {
   },
 
   [Types.UPDATE_OUTLET_SUCCESS]: (state, action) => {
+    console.log(action);
     return {
       ...state,
       updateOutlet: action.response,

@@ -24,6 +24,7 @@ class AccountList extends Component {
         break;
       case "delete-product":
         child = <DeleteProduct />;
+        break;
       case "list-product-customer":
         child = <ListProductCustomer />;
         break;

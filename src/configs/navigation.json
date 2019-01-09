@@ -8,7 +8,7 @@
         {
           "_id": "widget",
           "title": "Tạo đơn hàng",
-          "icon": "fa fa-lg fa-fw fa-book",
+          "icon": "fa fa-lg fa-fw fa-plus",
           "route": "/noi-dung"
         },
         {
@@ -20,7 +20,7 @@
         {
           "_id": "debt_list",
           "title": "Danh sách công nợ",
-          "icon": "fa fa-fw fa-sticky-note-o",
+          "icon": "fa fa-fw fa-book",
           "route": "/tra-cuu/cong-no"
         }
       ]
@@ -28,18 +28,18 @@
     {
       "_id": "product",
       "title": "Khách Hàng",
-      "icon": "fa fa-fw fa-shopping-cart",
+      "icon": "fa fa-fw fa-users",
       "items": [
         {
           "_id": "vendor_list",
           "title": "Danh sách khách hàng",
-          "icon": "fa fa-fw fa-barcode",
+          "icon": "fa fa-fw fa-list-alt",
           "route": "/san-pham"
         },
         {
           "_id": "list_khach_hang",
           "title": "Thêm khách hàng",
-          "icon": "fa fa-fw fa-list-alt",
+          "icon": "fa fa-fw fa-plus",
           "route": "/them-khach-hang"
         }
       ]
@@ -47,7 +47,7 @@
     {
       "_id": "search",
       "title": "Cửa hàng",
-      "icon": "fa fa-fw fa-search",
+      "icon": "fa fa-fw fa-table",
       "items": [
         {
           "_id": "vendor",
@@ -116,25 +116,25 @@
         {
           "_id": "manage_geolocation",
           "title": "Danh sách cửa hàng",
-          "icon": "fa fa-fw fa-map",
+          "icon": "fa fa-fw fa-list-alt",
           "route": "/manage/list"
         },
         {
           "_id": "pending_product",
           "title": "Thuốc chờ xác nhận",
-          "icon": "fa fa-fw fa-map",
+          "icon": "fa fa-fw fa-check-square-o",
           "route": "/manage/pending-product"
         },
         {
           "_id": "delete_product",
           "title": "Xóa thuốc trong kho",
-          "icon": "fa fa-fw fa-map",
+          "icon": "fa fa-fw fa-remove",
           "route": "/manage/delete-product"
         },
         {
           "_id": "list_product_customr",
           "title": "Quản lý cửa hàng",
-          "icon": "fa fa-fw fa-map",
+          "icon": "fa fa-fw fa-tasks",
           "route": "/manage/list-product-customer"
         }
       ]

@@ -18,7 +18,8 @@ class ListProductAdmin extends PureComponent {
       listCustomer: [],
       listSelect: [],
       idCustomer: 0,
-      keywords: "",
+	  keywords: "",
+	  loading: false
     };
   }
 
@@ -64,7 +65,7 @@ class ListProductAdmin extends PureComponent {
     );
   }
 
-  submitSearch() {
+  submitSearch() {	  
     this.props.actions.admin.detailProductCustomer(
       this.props.storage.token,
       this.state.idCustomer,
@@ -139,18 +140,15 @@ class ListProductAdmin extends PureComponent {
                 </div>
               </form>
             </div>
-            <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-              <ul id="sparks" className="">
-                <li className="sparks-info">
-                  <button
+            <div className="col-xs-12" style={{'text-align':'center'}}>              
+                  <button 
                     onClick={() => this.submitSearch()}
                     type="button"
                     className="btn btn-success btn-lg"
+                    style={{'margin-bottom':'30px'}}
                   >
                     Tìm Kiếm
-                  </button>
-                </li>
-              </ul>
+                  </button>                
             </div>
           </div>
         </JarvisWidget>
