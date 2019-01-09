@@ -30,7 +30,7 @@ import Stock from "./sales/stock";
 import Vendor from "./sales/vendor";
 import Widget from "./operate/widget";
 import PaymentMethod from "./sales/payment_method";
-import DebtList from './operate/widget';
+import DebtList from './search';
 
 import Configs from "../configs";
 

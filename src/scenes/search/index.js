@@ -7,7 +7,7 @@ import Layout from "../../components/layout";
 import Cart from "./cart";
 import Invoice from "./invoice";
 import InvoiceDetail from "./invoice_detail";
-import Debt_List from './debt_list';
+import DebtList from './debt_list';
 
 
 class Search extends Component {
@@ -23,10 +23,10 @@ class Search extends Component {
         break;
       case "don-hang":
         child = <Cart />;
-        break
+        break;
       case "cong-no":
-        child = <Debt_List />;
-        break
+        child = <DebtList />;
+        break;
       case "chi-tiet-khach-hang":
         child = this.props.match.params.id ? (
           <Cart id={this.props.match.params.id} />
