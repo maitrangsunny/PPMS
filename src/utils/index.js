@@ -23,6 +23,8 @@ const LINK = {
   PAYMENT_METHOD: "phuong-thuc-thanh-toan",
   PRINT: "print",
   PRODUCT_PENDING: "product-pending",
+
+  ADD_CUSTOMER_PAGE: "add-customer-page"
 };
 
 const BIGBOX = {
@@ -286,6 +288,9 @@ export default class {
 
       case "dashboard":
         prefix = "/";
+        break;
+      case "add-customer-page":
+        prefix = "/add-customer-page/";
         break;
     }
 

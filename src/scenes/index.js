@@ -32,6 +32,8 @@ import Widget from "./operate/widget";
 import PaymentMethod from "./sales/payment_method";
 import DebtList from './search';
 
+import AddPage from "./operate/product"
+
 import Configs from "../configs";
 
 Configs.load("app");
@@ -81,7 +83,8 @@ render(
 
           <Route path="/noi-dung/:action" component={Widget} />
           <Route path="/noi-dung" component={Widget} />
-          <Route path="/debt-list" component={DebtList} />
+          <Route path="/tra-cuu/cong-no" component={DebtList} />
+          <Route path="/add-customer-page" component={AddPage} />
         </Switch>
       </Launcher>
     </ConnectedRouter>

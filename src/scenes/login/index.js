@@ -60,6 +60,11 @@ class Login extends Component {
     }
   }
 
+  switchRoute(e){
+	 
+	  this.props.actions.app.navigate(Utils.link(LINK.ADD_CUSTOMER_PAGE));
+  }
+
   handerRegister(e) {
     if (this.state.resigterPass !== this.state.confirmPass) {
       alert("Mật khẩu phải giống nhau");
@@ -120,8 +125,8 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.authenticate.login &&
+	if (
+   	  nextProps.authenticate.login &&
       nextProps.authenticate.login.status == 200 &&
       !nextProps.authenticate.flagLogin
     ) {
@@ -605,6 +610,15 @@ class Login extends Component {
                           onClick={evt => this.handleLogin(evt)}
                         >
                           Đăng Nhập
+                        </button>
+                      </footer>
+                      <footer>                        
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          onClick={evt => this.switchRoute(evt)}
+                        >
+                          Login
                         </button>
                       </footer>
                     </form>
