@@ -8,6 +8,7 @@ import Cart from "./cart";
 import Invoice from "./invoice";
 import InvoiceDetail from "./invoice_detail";
 import DebtList from './debt_list';
+import OrderList from './order_list';
 
 
 class Search extends Component {
@@ -26,6 +27,9 @@ class Search extends Component {
         break;
       case "cong-no":
         child = <DebtList />;
+        break;
+      case "pending-order-list":
+        child = <OrderList />;
         break;
       case "chi-tiet-khach-hang":
         child = this.props.match.params.id ? (

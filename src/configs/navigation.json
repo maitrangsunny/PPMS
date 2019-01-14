@@ -56,6 +56,12 @@
           "route": "/nha-cung-cap/danh-sach"
         },
         {
+          "_id": "order",
+          "title": "Đơn hàng chờ duyệt",
+          "icon": "fa fa-list-alt",
+          "route": "/tra-cuu/pending-order-list"
+        },
+        {
           "_id": "stock",
           "title": "Nhập hàng",
           "icon": "fa fa-fw fa-university",

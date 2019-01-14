@@ -618,7 +618,7 @@ class Login extends Component {
                           className="btn btn-danger"
                           onClick={evt => this.switchRoute(evt)}
                         >
-                          Login
+                          Đặt hàng
                         </button>
                       </footer>
                     </form>

@@ -31,6 +31,7 @@ import Vendor from "./sales/vendor";
 import Widget from "./operate/widget";
 import PaymentMethod from "./sales/payment_method";
 import DebtList from './search';
+import PendingOrderList from './search';
 
 import AddPage from "./operate/product"
 
@@ -84,6 +85,7 @@ render(
           <Route path="/noi-dung/:action" component={Widget} />
           <Route path="/noi-dung" component={Widget} />
           <Route path="/tra-cuu/cong-no" component={DebtList} />
+          <Route path="/tra-cuu/pending-order-list" component={PendingOrderList} />
           <Route path="/add-customer-page" component={AddPage} />
         </Switch>
       </Launcher>
