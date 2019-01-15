@@ -43,9 +43,9 @@ class OrderList extends Component {
                     //     })
                     //   }
                       type="button"
-                      className="btn btn-success btn-lg"
+                      className="btn btn-warning btn-lg"
                     >
-                      Xem Tất Cả
+                      Duyệt
                     </button>
                   </li>
                 </ul>
@@ -69,9 +69,22 @@ class OrderList extends Component {
                             <th>Họ tên</th>
                             <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
+                            <th>Lựa chọn</th>
                           </tr>
                         </thead>
                         <tbody>
+                          <tr>
+                              <td>1</td>
+                              <td>Mai Trang</td>
+                              <td>Tân Phú</td>
+                              <td>0123456789</td>                             
+                              <td>
+                                  <label className="checkbox-group">
+                                      <input type="checkbox"/>
+                                      <span className="checkmark"></span>
+                                  </label>
+                              </td> 
+                          </tr>
                         
                         </tbody>
                       </table>

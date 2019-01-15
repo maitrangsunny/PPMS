@@ -205,7 +205,7 @@ class GeolocationList extends Component {
         <h5 style={{ flex: 1 }}>{item.outlet.name}</h5>
         <h5 style={{ flex: 1 }}>{Utils.getTime(parseInt(item.created_at))}</h5>
         <p>
-          <span class="glyphicon glyphicon-unchecked" />
+          <span className="glyphicon glyphicon-unchecked" />
         </p>
       </div>
     );

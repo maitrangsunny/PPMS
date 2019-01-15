@@ -9,6 +9,8 @@ import Invoice from "./invoice";
 import InvoiceDetail from "./invoice_detail";
 import DebtList from './debt_list';
 import OrderList from './order_list';
+import PermanentlyDeletedProduct from './permanently_deleted_product';
+import TemporaryDeletedProduct from './temporary_deleted_product';
 
 
 class Search extends Component {
@@ -31,6 +33,12 @@ class Search extends Component {
       case "pending-order-list":
         child = <OrderList />;
         break;
+      case "temporary-deleted-product":
+        child = <TemporaryDeletedProduct />;
+      break;
+      case "permanently-deleted-product":
+        child = <PermanentlyDeletedProduct />;
+      break;
       case "chi-tiet-khach-hang":
         child = this.props.match.params.id ? (
           <Cart id={this.props.match.params.id} />

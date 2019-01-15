@@ -62,6 +62,18 @@
           "route": "/tra-cuu/pending-order-list"
         },
         {
+          "_id": "temp_delete",
+          "title": "Xóa thuốc tạm thời",
+          "icon": "fa fa fa-trash-o",
+          "route": "/tra-cuu/temporary-deleted-product"
+        },
+        {
+          "_id": "perm_delete",
+          "title": "Xóa thuốc vĩnh viễn",
+          "icon": "fa fa-fw fa-remove",
+          "route": "/tra-cuu/permanently-deleted-product"
+        },
+        {
           "_id": "stock",
           "title": "Nhập hàng",
           "icon": "fa fa-fw fa-university",

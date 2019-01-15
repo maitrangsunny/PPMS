@@ -33,6 +33,9 @@ import PaymentMethod from "./sales/payment_method";
 import DebtList from './search';
 import PendingOrderList from './search';
 
+import PermanentlyDeletedProduct from './search';
+import TemporaryDeletedProduct from './search';
+
 import AddPage from "./operate/product"
 
 import Configs from "../configs";
@@ -86,6 +89,11 @@ render(
           <Route path="/noi-dung" component={Widget} />
           <Route path="/tra-cuu/cong-no" component={DebtList} />
           <Route path="/tra-cuu/pending-order-list" component={PendingOrderList} />
+
+          <Route path="/tra-cuu/temporary-deleted-product" component={TemporaryDeletedProduct} />
+          <Route path="/tra-cuu/permanently-deleted-product" component={PermanentlyDeletedProduct} />
+          
+          
           <Route path="/add-customer-page" component={AddPage} />
         </Switch>
       </Launcher>
