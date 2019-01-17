@@ -264,6 +264,23 @@ export function updateDebt(token,id, payment, rest, expired){
 	}
 }
 
+// delete temporary product
+
+export function deletedTempProduct(token, id, is_enable) {
+  console.log(is_enable, id);
+  return {
+      type: Types.DELETE_TEMP_PRODUCT,
+      payload: {
+      token: token,
+      api: Configs.API + "outlet-product/"+id,
+      method: "PUT",
+      payload: {
+        is_enable : 0
+      }
+    }
+  }
+}
+
 export function setFlagShortBill(bool = true) {
   return {
     type: Types.SET_FLAG_SHORT_BILL,
@@ -316,6 +333,13 @@ export function setFlagUpdateProduct(bool = true) {
 export function setFlagUpdateDebt(bool = true) {
   return {
     type: Types.SET_FLAG_UPDATE_DEBT,
+    payload: bool,
+  };
+}
+
+export function setFlagDeleteTempProduct(bool = true) {
+  return {
+    type: Types.SET_FLAG_DELETE_TEMP_PRODUCT,
     payload: bool,
   };
 }

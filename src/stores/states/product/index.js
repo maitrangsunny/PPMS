@@ -45,7 +45,10 @@ export default keymirror(
     DETAIL_DEBT_SUCCESS: null,
 
 	UPDATE_DEBT: null,
-	UPDATE_DEBT_SUCCESS: null,
+    UPDATE_DEBT_SUCCESS: null,    
+
+    DELETE_TEMP_PRODUCT:null,
+    DELETE_TEMP_PRODUCT_SUCCESS: null,
 
     SET_FLAG_SHORT_BILL: null,
     SET_FLAG_SUBMIT_BILL: null,
@@ -56,7 +59,10 @@ export default keymirror(
     SET_FLAG_DELETE_PENDING: null,
 	SET_FLAG_UPDATE_PRODUCT: null,
 	
-	SET_FLAG_UPDATE_DEBT: null,
+    SET_FLAG_UPDATE_DEBT: null,
+    SET_FLAG_DELETE_TEMP_PRODUCT: null,
+    
+
 
     
     

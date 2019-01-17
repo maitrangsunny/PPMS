@@ -17,6 +17,7 @@ const INIT_STATE = {
   flagDeletePending: true,
   flagUpdateProduct: false,
   flagUpdateDebt: false,
+  flagDeleteTempProduct: true,
   addPending: [],
   deletePending: [],
   updateProduct: [],
@@ -25,7 +26,8 @@ const INIT_STATE = {
   adminDeleteProduct: {},
   debtList: [],
   detailDebt:[],
-  updateDebt:[]
+  updateDebt:[],
+  deletedTempProduct: []
 };
 
 export default createReducer(INIT_STATE, {
@@ -174,11 +176,19 @@ export default createReducer(INIT_STATE, {
   },
 
   [Types.UPDATE_DEBT_SUCCESS]: (state, action) => {
-	console.log("reducer", action);
+	
 	return {
 		...this.state,
 		updateDebt: action.response
 	}
+  },
+
+  [Types.DELETE_TEMP_PRODUCT_SUCCESS]: (state, action) => {
+    console.log("reducer", action);
+    return {
+      ...this.state,
+      deletedTempProduct: action.response
+    }
   },
   ///////////
   [Types.SET_FLAG_LIST_PENDING]: (state, action) => {
@@ -214,6 +224,13 @@ export default createReducer(INIT_STATE, {
     return {
       ...state,
       flagUpdateDebt: action.payload,
+    };
+  },
+
+  [Types.SET_FLAG_DELETE_TEMP_PRODUCT]: (state, action) => {
+    return {
+      ...state,
+      flagDeleteTempProduct: action.payload,
     };
   },
 });
