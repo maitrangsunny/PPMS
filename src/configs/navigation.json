@@ -63,14 +63,14 @@
         },
         {
           "_id": "temp_delete",
-          "title": "Xóa thuốc tạm thời",
-          "icon": "fa fa fa-trash-o",
+          "title": "Xóa thuốc",
+          "icon": "fa fa fa-remove",
           "route": "/tra-cuu/temporary-deleted-product"
         },
         {
           "_id": "perm_delete",
-          "title": "Xóa thuốc vĩnh viễn",
-          "icon": "fa fa-fw fa-remove",
+          "title": "Thuốc xóa tạm",
+          "icon": "fa fa-fw  fa-trash-o",
           "route": "/tra-cuu/permanently-deleted-product"
         },
         {

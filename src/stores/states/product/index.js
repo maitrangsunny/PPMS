@@ -50,6 +50,13 @@ export default keymirror(
     DELETE_TEMP_PRODUCT:null,
     DELETE_TEMP_PRODUCT_SUCCESS: null,
 
+    DELETE_PERM_PRODUCT:null,
+    DELETE_PERM_PRODUCT_SUCCESS: null,
+
+    TRASH_PRODUCT_LIST:null,
+    TRASH_PRODUCT_LIST_SUCCESS: null,
+
+
     SET_FLAG_SHORT_BILL: null,
     SET_FLAG_SUBMIT_BILL: null,
     SET_FLAG_EDIT_BILL: null,
@@ -60,12 +67,9 @@ export default keymirror(
 	SET_FLAG_UPDATE_PRODUCT: null,
 	
     SET_FLAG_UPDATE_DEBT: null,
+    SET_FLAG_DELETE_PERM_PRODUCT: null,
     SET_FLAG_DELETE_TEMP_PRODUCT: null,
-    
-
-
-    
-    
+ 
   },
   "PRODUCT_"
 );

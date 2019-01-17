@@ -220,6 +220,7 @@ input[type="checkbox"].switch:checked + div > div {
 }
 
 .product-list{
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;

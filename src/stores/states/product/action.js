@@ -264,19 +264,44 @@ export function updateDebt(token,id, payment, rest, expired){
 	}
 }
 
-// delete temporary product
+// delete permanently product
 
-export function deletedTempProduct(token, id, is_enable) {
-  console.log(is_enable, id);
+export function deletedPermProduct(token, ids) {
+  return {
+      type: Types.DELETE_PERM_PRODUCT,
+      payload: {
+      token: token,
+      api: Configs.API + "outlet-product/deleteTrash",
+      method: "POST",
+      payload: {
+        ids
+      }
+    }
+  }
+}
+
+export function deletedTempProduct(token, ids) {
   return {
       type: Types.DELETE_TEMP_PRODUCT,
       payload: {
       token: token,
-      api: Configs.API + "outlet-product/"+id,
-      method: "PUT",
+      api: Configs.API + "outlet-product/updateStatusIds",
+      method: "POST",
       payload: {
-        is_enable : 0
+        ids
       }
+    }
+  }
+}
+
+export function listProductTrash(token) {
+  return {
+      type: Types.TRASH_PRODUCT_LIST,
+      payload: {
+      token: token,
+      api: Configs.API + "outlet-product-trash",
+      method: "GET",
+      payload: {}
     }
   }
 }
@@ -337,9 +362,17 @@ export function setFlagUpdateDebt(bool = true) {
   };
 }
 
+export function setFlagDeletePermProduct(bool = true) {
+  return {
+    type: Types.SET_FLAG_DELETE_PERM_PRODUCT,
+    payload: bool,
+  };
+}
+
 export function setFlagDeleteTempProduct(bool = true) {
   return {
     type: Types.SET_FLAG_DELETE_TEMP_PRODUCT,
     payload: bool,
   };
 }
+

@@ -17,7 +17,9 @@ const INIT_STATE = {
   flagDeletePending: true,
   flagUpdateProduct: false,
   flagUpdateDebt: false,
+  flagDeletePermProduct: true,
   flagDeleteTempProduct: true,
+  flagTrashList: true,
   addPending: [],
   deletePending: [],
   updateProduct: [],
@@ -27,7 +29,9 @@ const INIT_STATE = {
   debtList: [],
   detailDebt:[],
   updateDebt:[],
-  deletedTempProduct: []
+  deletePermProduct: [],
+  deleteTempProduct: [],
+  trashProductList: []
 };
 
 export default createReducer(INIT_STATE, {
@@ -183,11 +187,32 @@ export default createReducer(INIT_STATE, {
 	}
   },
 
-  [Types.DELETE_TEMP_PRODUCT_SUCCESS]: (state, action) => {
-    console.log("reducer", action);
+  [Types.DELETE_PERM_PRODUCT_SUCCESS]: (state, action) => {
+    
     return {
       ...this.state,
-      deletedTempProduct: action.response
+      deletePermProduct: action.response,
+      flagDeletePermProduct: false
+    }
+  },
+
+  [Types.DELETE_TEMP_PRODUCT_SUCCESS]: (state, action) => {
+
+    console.log(action.response);
+    
+    return {
+      ...this.state,
+      deleteTempProduct: action.response,
+      flagDeleteTempProduct: false
+    }
+  },
+
+  [Types.TRASH_PRODUCT_LIST_SUCCESS]: (state, action) => {    
+    console.log(action.response);
+    return {
+      ...this.state,
+      trashProductList: action.response,
+      flagTrashList: false
     }
   },
   ///////////
@@ -224,6 +249,13 @@ export default createReducer(INIT_STATE, {
     return {
       ...state,
       flagUpdateDebt: action.payload,
+    };
+  },
+
+  [Types.SET_FLAG_DELETE_PERM_PRODUCT]: (state, action) => {
+    return {
+      ...state,
+      flagDeletePermProduct: action.payload,
     };
   },
 

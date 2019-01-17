@@ -33,81 +33,73 @@ class TemporaryDeletedProduct extends Component{
     componentWillReceiveProps(nextProps){
         // if (nextProps.authenticate.allProduct && nextProps.authenticate.allProduct.status == 200) {
 		// 	this.setState({
-		// 		productAll: nextProps.props.authenticate.allProduct.data,
+		// 		data: nextProps.props.authenticate.allProduct.data,
 		// 		loading: false,
         //     });
         // }	
         
         if (nextProps.authenticate.listOutlet && nextProps.authenticate.listOutlet.status == 200) {
-			this.setState({
-				data: nextProps.authenticate.listOutlet.data,
-				loading: false,
-			});
+          this.setState({
+            data: nextProps.authenticate.listOutlet.data,
+            loading: false,
+          });
         }	
         
         if (
-            nextProps.product.deletedTempProduct &&
-            nextProps.product.deletedTempProduct.status == 200 &&
+            nextProps.product.deleteTempProduct &&
+            nextProps.product.deleteTempProduct.status == 200 &&
             !nextProps.product.flagDeleteTempProduct
           ) {
             nextProps.actions.product.setFlagDeleteTempProduct();
             this.setState({  
-                isEnable: 0
+				data: nextProps.product.deleteTempProduct.data,
             });
           }
     }
-
-    deleteTempProduct(id,isEnable) {       
-        this.props.actions.product.deletedTempProduct(
-          this.props.storage.token,
-          id,
-          isEnable,
-        );
-        this.setState({
-            data: this.state.data.filter((data, i) => data.id !== id),
-            isEnable: 0
-        })
-    }
-
+	deletedProduct() {
+		this.props.actions.product.deletedTempProduct(
+		  this.props.storage.token,
+		  this.state.listSelect,
+		);
+	}
     format2(n, currency) {
         return (
           n.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, "$1,") + " " + currency
         );
       }
     
-    NumberList(data) {
-        const listItems = data.map((item, index) => this.itemList(item, index));
-        return <div>{listItems}</div>;
-    }
+	NumberList(data) {
+		console.log(data);
+		const listItems = data.map((item, index) => this.itemList(item, index));
+		return <div>{listItems}</div>;
+	}
     
     itemList(item, index) {
-        // let flag = this.state.listSelect.indexOf(item.id) > -1;
-        // if (flag) {
-        //   return (
-        //     <div
-        //       className="product-list active"
-        //       key={index}
-        //       onClick={() => this.selectCate(index, item.id)}
-        //     >
-        //       <p style={{ width: 100 }}>{index + 1}</p>
-        //       <p style={{ fontWeight: "300", flex: 1 }}>{item.name}</p>
-        //       <p style={{ flex: 1 }}>
-        //         {this.format2(parseInt(item.price), "VNĐ")}
-        //       </p>
-        //       {/* <h5 style={{ flex: 1 }}>{item.outlet.name}</h5> */}
-        //       <p style={{ flex: 1 }}>
-        //         {Utils.getTime(parseInt(item.created_at))}
-        //       </p>
-        //       <p>
-        //             <span className="glyphicon">&#xe067;</span>
-        //       </p>
-             
-        //     </div>
-        //   );
-        // }
+        let flag = this.state.listSelect.indexOf(item.id) > -1;
+        if (flag) {
+          return (
+            <div
+              className="product-list active"
+              key={index}
+              onClick={() => this.selectCate(index, item.id)}
+            >
+              <p style={{ width: 100 }}>{index + 1}</p>
+              <p style={{ fontWeight: "300", flex: 1 }}>{item.name}</p>
+              <p style={{ flex: 1 }}>
+                {this.format2(parseInt(item.price), "VNĐ")}
+              </p>
+              {/* <h5 style={{ flex: 1 }}>{item.outlet.name}</h5> */}
+              <p style={{ flex: 1 }}>
+                {Utils.getTime(parseInt(item.created_at))}
+              </p>
+              <span className="glyphicon">&#xe067;</span>
+            </div>
+          );
+        }
         return (
-          <div           
-            className={`product-list`}
+          <div
+            onClick={() => this.selectCate(index, item.id)}
+            className="product-list"
             key={index}
           >
             <p style={{ width: 100 }}>{index + 1}</p>
@@ -115,37 +107,30 @@ class TemporaryDeletedProduct extends Component{
             <p style={{ flex: 1 }}>{this.format2(parseInt(item.price), "VNĐ")}</p>
             {/* <h5 style={{ flex: 1 }}>{item.outlet.name}</h5> */}
             <p style={{ flex: 1 }}>{Utils.getTime(parseInt(item.created_at))}</p>
-            
-            <button className="btn btn-danger" onClick={()=>this.deleteTempProduct(item.id,item.is_enable)}>Xóa</button>
+            <p>
+              <span className="glyphicon glyphicon-unchecked" />
+            </p>
           </div>
         );
       }
     
     selectCate(index, id) {
-        console.log(id);
-        this.setState({
-            isChecked: !this.state.isChecked,
-            id: id,
-            isEnable: 0
-        });
-        // let arrayData = this.state.data.slice();
-        // let arraySelect = this.state.listSelect.slice();
+        let arrayData = this.state.data.slice();
+        let arraySelect = this.state.listSelect.slice();
     
-        // let tempFlag = arrayData[index].is_check || false;
-        // arrayData[index].is_check = !tempFlag;
+        let tempFlag = arrayData[index].is_check || false;
+        arrayData[index].is_check = !tempFlag;
     
-        // let position = arraySelect.indexOf(id);
-        // if (position > -1) {
-        //   arraySelect.splice(position, 1);
-        // } else {
-        //   arraySelect.push(id);
-        // }
-        // this.setState({ listSelect: arraySelect, data: arrayData });
-      }
+        let position = arraySelect.indexOf(id);
+        if (position > -1) {
+          arraySelect.splice(position, 1);
+        } else {
+          arraySelect.push(id);
+        }
+        this.setState({ listSelect: arraySelect, data: arrayData });
+    }
     
-    render(){
-        var list = this.state.data.filter((data, i) => data.is_enable !== this.state.isEnable)
-        console.log(list);
+    render(){       
         return(
             <div id="content">
             <Loading loading={this.state.loading} />
@@ -155,10 +140,10 @@ class TemporaryDeletedProduct extends Component{
                     Xóa thuốc
                 </h1>
               </div>
-              {/* <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+              <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
                 <ul id="sparks" className="">                 
                   <li
-                    onClick={() => this.deleteTempProduct()}
+                    onClick={() => this.deletedProduct()}
                     className="sparks-info"
                   >
                     <button type="button" className="btn btn-danger btn-lg">
@@ -166,7 +151,7 @@ class TemporaryDeletedProduct extends Component{
                     </button>
                   </li>
                 </ul>
-              </div> */}
+              </div>
             </div>
             <JarvisWidget editbutton={false} color="darken">
               <header>
@@ -177,13 +162,12 @@ class TemporaryDeletedProduct extends Component{
               </header>
               <div>
                 <div className="custom-table-bill">
-                  {this.NumberList(list)}
+                  {this.NumberList(this.state.data)}
                 </div>
               </div>
             </JarvisWidget>
           </div>
         )
     }
-    
 }
 export default Connect(TemporaryDeletedProduct)

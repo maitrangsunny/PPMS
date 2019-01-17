@@ -92,9 +92,20 @@ function* updateDebt(action){
   yield put({...action, type: Types.UPDATE_DEBT_SUCCESS, response});
 }
 
+function* deletePermProduct(action){
+  let response = yield call(API.request, action.payload);
+  yield put({...action, type: Types.DELETE_PERM_PRODUCT_SUCCESS, response});
+}
+
 function* deleteTempProduct(action){
   let response = yield call(API.request, action.payload);
   yield put({...action, type: Types.DELETE_TEMP_PRODUCT_SUCCESS, response});
+}
+
+
+function* trashProductList(action){
+  let response = yield call(API.request, action.payload);
+  yield put({...action, type: Types.TRASH_PRODUCT_LIST_SUCCESS, response});
 }
 
 export default function* saga() {
@@ -117,6 +128,8 @@ export default function* saga() {
 	    yield takeLatest(Types.DEBT_LIST, getDebtList),
       yield takeLatest(Types.DETAIL_DEBT, getDetailDebt),
       yield takeLatest(Types.UPDATE_DEBT, updateDebt),
-      yield takeLatest(Types.DELETE_TEMP_PRODUCT, deleteTempProduct)
+      yield takeLatest(Types.DELETE_PERM_PRODUCT, deletePermProduct),
+      yield takeLatest(Types.DELETE_TEMP_PRODUCT, deleteTempProduct),
+      yield takeLatest(Types.TRASH_PRODUCT_LIST, trashProductList)
     ]);
 }
