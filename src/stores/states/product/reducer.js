@@ -31,7 +31,8 @@ const INIT_STATE = {
   updateDebt:[],
   deletePermProduct: [],
   deleteTempProduct: [],
-  trashProductList: []
+  trashProductList: [],
+  searchProductList: []
 };
 
 export default createReducer(INIT_STATE, {
@@ -213,6 +214,14 @@ export default createReducer(INIT_STATE, {
       ...this.state,
       trashProductList: action.response,
       flagTrashList: false
+    }
+  },
+
+  [Types.SEARCH_PRODUCT_LIST_SUCCESS]: (state, action) => {    
+    console.log(action.response);
+    return {
+      ...this.state,
+      searchProductList: action.response
     }
   },
   ///////////

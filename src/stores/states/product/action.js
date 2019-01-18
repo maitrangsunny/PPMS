@@ -306,6 +306,20 @@ export function listProductTrash(token) {
   }
 }
 
+export function searchListProduct(token, keyword) {
+  return {
+      type: Types.SEARCH_PRODUCT_LIST,
+      payload: {
+      token: token,
+      api: Configs.API + "outlet-product/getListByKeyword",
+      method: "POST",
+      payload: {
+        keyword,
+      }
+    }
+  }
+}
+
 export function setFlagShortBill(bool = true) {
   return {
     type: Types.SET_FLAG_SHORT_BILL,

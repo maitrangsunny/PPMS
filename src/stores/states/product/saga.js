@@ -108,6 +108,11 @@ function* trashProductList(action){
   yield put({...action, type: Types.TRASH_PRODUCT_LIST_SUCCESS, response});
 }
 
+function* searchListProduct(action){
+  let response = yield call(API.request, action.payload);
+  yield put({...action, type: Types.SEARCH_PRODUCT_LIST_SUCCESS, response});
+}
+
 export default function* saga() {
   yield takeLatest(Types.ADMIN_DELETE_PRODUCT, adminDeleteProduct),
     yield all([
@@ -130,6 +135,7 @@ export default function* saga() {
       yield takeLatest(Types.UPDATE_DEBT, updateDebt),
       yield takeLatest(Types.DELETE_PERM_PRODUCT, deletePermProduct),
       yield takeLatest(Types.DELETE_TEMP_PRODUCT, deleteTempProduct),
-      yield takeLatest(Types.TRASH_PRODUCT_LIST, trashProductList)
+      yield takeLatest(Types.TRASH_PRODUCT_LIST, trashProductList),
+      yield takeLatest(Types.SEARCH_PRODUCT_LIST, searchListProduct)
     ]);
 }

@@ -56,6 +56,9 @@ export default keymirror(
     TRASH_PRODUCT_LIST:null,
     TRASH_PRODUCT_LIST_SUCCESS: null,
 
+    SEARCH_PRODUCT_LIST:null,
+    SEARCH_PRODUCT_LIST_SUCCESS: null,
+
 
     SET_FLAG_SHORT_BILL: null,
     SET_FLAG_SUBMIT_BILL: null,

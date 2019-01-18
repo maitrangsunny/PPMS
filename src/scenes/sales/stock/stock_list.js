@@ -126,8 +126,9 @@ class StockList extends Component {
 							<label className="col-lg-3 control-label">Tên thuốc</label>
 							<div className="col-lg-7">
 								<input className="col-xs-12 form-control" 
-								style={inputStyle}								
-								onChange={this.onChange}/>							
+											style={inputStyle}								
+											onChange={this.onChange}
+											placeholder="Từ khóa..."/>							
 							</div>
 							</div>					
 						</fieldset>					

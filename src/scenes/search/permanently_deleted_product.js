@@ -16,22 +16,21 @@ class PermanentlyDeletedProduct extends Component{
             data: [],            
             listSelect: [],
         }
-        
     }
 
     async componentWillMount(){
-        this.setState({loading: true});
+      this.setState({loading: true});
         await this.props.actions.product.listProductTrash(
-			this.props.storage.token
-		);
+			    this.props.storage.token
+		    );
     }
 
     componentWillReceiveProps(nextProps){
         if (nextProps.product.trashProductList && nextProps.product.trashProductList.status == 200&&
             !nextProps.product.flagTrashList) {
             this.setState({
-              data: nextProps.product.trashProductList.data,
-              loading: false,
+                data: nextProps.product.trashProductList.data,
+                loading: false,
             });
         }        
         if (
@@ -40,17 +39,17 @@ class PermanentlyDeletedProduct extends Component{
             !nextProps.product.flagDeletePermProduct
         ) {
             nextProps.actions.product.setFlagDeletePermProduct();
-            this.setState({
-               data: nextProps.product.deletePermProduct.data,
-            });
+            nextProps.actions.product.listProductTrash(
+                nextProps.storage.token
+            );
         } 
     }
 
     deletedProduct() {
-		this.props.actions.product.deletedPermProduct(
-		  this.props.storage.token,
-		  this.state.listSelect,
-		);
+      this.props.actions.product.deletedPermProduct(
+        this.props.storage.token,
+        this.state.listSelect,
+      );
     }
     
     format2(n, currency) {
@@ -60,7 +59,6 @@ class PermanentlyDeletedProduct extends Component{
       }
     
 	NumberList(data) {
-        console.log(data);
 		const listItems = data.map((item, index) => this.itemList(item, index));
 		return <div>{listItems}</div>;
 	}
@@ -124,6 +122,7 @@ class PermanentlyDeletedProduct extends Component{
     render(){
         return(
             <div id="content">
+             <Loading loading={this.state.loading} />
             <div className="row">
               <div className="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                 <h1 className="page-title txt-color-blueDark">

@@ -12,56 +12,72 @@ class TemporaryDeletedProduct extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            loading: false,
-            showError: false,
+			loading: false,			
             data: [],            
-            listSelect: [],
-            isEnable: null
+			listSelect: [],
+			searchList: [],
+			keyword: ""
         }  
     }
 
-    async componentWillMount(){
-        this.setState({loading: true});
-        // await this.props.actions.authenticate.getAllProduct(
-        //     this.props.storage.token
-        // );
-        await this.props.actions.authenticate.listOutler(
-			this.props.storage.token
-		);
+    componentWillMount(){        
+     	this.props.actions.product.searchListProduct(
+			this.props.storage.token,
+			this.state.keyword
+        );
     }
 
-    componentWillReceiveProps(nextProps){
-        // if (nextProps.authenticate.allProduct && nextProps.authenticate.allProduct.status == 200) {
-		// 	this.setState({
-		// 		data: nextProps.props.authenticate.allProduct.data,
-		// 		loading: false,
-        //     });
-        // }	
-        
-        if (nextProps.authenticate.listOutlet && nextProps.authenticate.listOutlet.status == 200) {
+    componentWillReceiveProps(nextProps){             
+
+		if (nextProps.product.searchProductList && nextProps.product.searchProductList.status == 200) {
           this.setState({
-            data: nextProps.authenticate.listOutlet.data,
-            loading: false,
+				data: nextProps.product.searchProductList.data,
+				loading: false,
           });
-        }	
+		}
         
         if (
             nextProps.product.deleteTempProduct &&
             nextProps.product.deleteTempProduct.status == 200 &&
             !nextProps.product.flagDeleteTempProduct
-          ) {
-            nextProps.actions.product.setFlagDeleteTempProduct();
-            this.setState({  
-				data: nextProps.product.deleteTempProduct.data,
-            });
-          }
-    }
+        ) {
+				nextProps.actions.product.setFlagDeleteTempProduct();				
+				this.props.actions.product.searchListProduct(
+					this.props.storage.token,
+					this.state.keyword
+				);
+        }
+	}
+	
+	handleChange = (event) => {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value ;
+		const name = target.name;
+		this.setState({
+			[name]: value
+		});
+	}
+
 	deletedProduct() {
 		this.props.actions.product.deletedTempProduct(
-		  this.props.storage.token,
-		  this.state.listSelect,
+			this.props.storage.token,
+			this.state.listSelect,
 		);
 	}
+
+	async searchList(){	
+		if(this.state.keyword.length>=3){
+			this.setState({loading: true});
+			await	this.props.actions.product.searchListProduct(
+				this.props.storage.token,
+				this.state.keyword
+			);
+		}else{
+			alert("Nhập từ khóa từ 3 ký tự trở lên!")
+		}
+		
+	}
+
     format2(n, currency) {
         return (
           n.toFixed().replace(/(\d)(?=(\d{3})+(,|$))/g, "$1,") + " " + currency
@@ -69,7 +85,6 @@ class TemporaryDeletedProduct extends Component{
       }
     
 	NumberList(data) {
-		console.log(data);
 		const listItems = data.map((item, index) => this.itemList(item, index));
 		return <div>{listItems}</div>;
 	}
@@ -87,8 +102,7 @@ class TemporaryDeletedProduct extends Component{
               <p style={{ fontWeight: "300", flex: 1 }}>{item.name}</p>
               <p style={{ flex: 1 }}>
                 {this.format2(parseInt(item.price), "VNĐ")}
-              </p>
-              {/* <h5 style={{ flex: 1 }}>{item.outlet.name}</h5> */}
+              </p>          
               <p style={{ flex: 1 }}>
                 {Utils.getTime(parseInt(item.created_at))}
               </p>
@@ -104,8 +118,7 @@ class TemporaryDeletedProduct extends Component{
           >
             <p style={{ width: 100 }}>{index + 1}</p>
             <p style={{ fontWeight: "300", flex: 1 }}>{item.name}</p>
-            <p style={{ flex: 1 }}>{this.format2(parseInt(item.price), "VNĐ")}</p>
-            {/* <h5 style={{ flex: 1 }}>{item.outlet.name}</h5> */}
+            <p style={{ flex: 1 }}>{this.format2(parseInt(item.price), "VNĐ")}</p>           
             <p style={{ flex: 1 }}>{Utils.getTime(parseInt(item.created_at))}</p>
             <p>
               <span className="glyphicon glyphicon-unchecked" />
@@ -130,10 +143,52 @@ class TemporaryDeletedProduct extends Component{
         this.setState({ listSelect: arraySelect, data: arrayData });
     }
     
-    render(){       
+    render(){     
+		const inputStyle = {
+			padding: '0 10px',
+			boxSizing : 'border-box'
+		}  	
         return(
             <div id="content">
             <Loading loading={this.state.loading} />
+			<div className="panel panel-heading">
+				<h1 className="page-title txt-color-blueDark">Xóa thuốc</h1>
+				<JarvisWidget editbutton={false} custombutton={false}>
+				<header>
+					<span className="widget-icon">				
+						<i className="fa fa-search" />{'Tìm Tên Thuốc'}
+					</span>
+				</header>
+				<div>
+					{/* widget content */}
+					<div className="widget-body no-padding">
+					<form className="smart-form" id="search">
+						<fieldset>
+						<label className="col-xs-12 text-center" style={{"paddingBottom":'10px'}}>Vui lòng nhập từ khóa từ 3 ký tự trở lên.</label>													<div className="form-group form-group--search">							
+							<label className="col-xs-12 col-md-3 col-sm-3 control-label">Tên thuốc</label>
+							<div className="col-xs-12 col-md-5 col-sm-5">							
+								<input className="col-xs-12 form-control" 
+										onChange={this.handleChange}
+										name="keyword"
+										style={inputStyle}		
+										value={this.state.keyword}
+										placeholder="Từ khóa..."						
+								/>				
+							</div>
+							<div className="col-xs-12 col-md-4 col-sm-4">
+								<button type="button" 
+								style = {{"marginLeft":"5px", 'padding':'6px'}} 
+								className="btn btn-primary btn-sm"
+								onClick={()=>this.searchList()}
+								>Tìm kiếm</button>
+							</div>							
+							</div>					
+						</fieldset>					
+					</form>
+					</div>
+				</div>
+			</JarvisWidget>	
+			</div>
             <div className="row">
               <div className="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                 <h1 className="page-title txt-color-blueDark">
@@ -161,8 +216,8 @@ class TemporaryDeletedProduct extends Component{
                 <h2>Danh sách</h2>
               </header>
               <div>
-                <div className="custom-table-bill">
-                  {this.NumberList(this.state.data)}
+                <div className="custom-table-bill">				
+					{this.NumberList(this.state.data)}
                 </div>
               </div>
             </JarvisWidget>
