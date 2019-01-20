@@ -146,9 +146,9 @@ class DebtList extends Component {
 											<th>STT</th>
 											<th>Tên Khách Hàng</th>
 											<th>Địa chỉ</th>
-											<th>Payment</th>
-											<th>Rest</th>
-											<th>Expired</th>
+											<th>Thanh toán (VNĐ)</th>
+											<th>Nợ còn lại (VNĐ)</th>
+											<th>Ngày hết hạn</th>
 											<th>Tình trạng</th>
 											<th>Chi tiết</th>								
 										</tr>
@@ -198,9 +198,9 @@ class DebtList extends Component {
 						<table  className="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
-									<th>Payment</th>
-									<th>Rest</th>
-									<th>Expire Date</th>
+									<th>Thanh toán</th>
+									<th>Nợ còn lại</th>
+									<th>Ngày hết hạn</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -217,34 +217,34 @@ class DebtList extends Component {
 						<hr/>
 						<form id="attributeForm">
 							<div className="form-group">
-								<label>Payment</label>
+								<label>Thanh toán</label>
 								<input 
 								type="text" 
 								name="payment" 
 								className="form-control"
-								placeholder="Payment" 
+								placeholder="Thanh toán" 
 								pattern="[0-9]*"
 								value={this.state.payment}  
 								onChange={this.handleInputChange}/>
 							</div>
 							<div className="form-group">
-								<label>Rest</label>
+								<label>Nợ còn lại</label>
 								<input type="text" 
 									name="rest" 
 									className="form-control" 
-									placeholder="Rest" 
+									placeholder="Nợ còn lại" 
 									pattern="[0-9]*"
 									value={this.state.rest} 
 									onChange={this.handleInputChange}/>
 							</div>
 							<div className="form-group">
-								<label>Expired date</label>
+								<label>Ngày hết hạn</label>
 								<UiDatepicker
 									type="text"
 									name="expired"
 									id="finishdate"
 									maxRestrict="#startdate"
-									placeholder="Expired date"
+									placeholder="Ngày hết hạn"
 									data-date-format="dd/mm/yy"
 									className="form-control"
 									pattern="[0-9]*"

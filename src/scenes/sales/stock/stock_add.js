@@ -67,14 +67,15 @@ class StockAdd extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-		id: 0,
-		ten: '',
-		soluong: 0,
-		loading: false,
-		value: "",
-		listOutlet: [],
-		suggestions: [],
-		soluonghientai: 0
+			id: 0,
+			ten: '',
+			soluong: 0,
+			loading: false,
+			value: "",
+			listOutlet: [],
+			suggestions: [],
+			soluonghientai: 0,
+			gia: 0
 		};
 	}
 
@@ -100,12 +101,13 @@ class StockAdd extends Component {
 		);	
 	}
 	componentWillReceiveProps(nextProps) {			
-		if (nextProps.authenticate.updateOutlet && nextProps.authenticate.updateOutlet.status == 200) {
+		if (nextProps.authenticate.updateOutlet && nextProps.authenticate.updateOutlet.status == 200) {			
 			this.setState({
 				listOutlet: nextProps.authenticate.listOutlet.data,
 				value: "",
 				soluong: 0,
 				soluonghientai:0,
+				gia:0,
 				loading: false
 			});	
 			return;
@@ -140,10 +142,12 @@ class StockAdd extends Component {
 	onSuggestionSelected = (
 		event,{ suggestion }
 	  ) => {
+
 		this.setState({
 			id: suggestion.id,
 			ten: suggestion.name,
-			soluonghientai: suggestion.stock_balance
+			soluonghientai: suggestion.stock_balance,
+			gia: suggestion.price
 		});
 	};
 
@@ -219,6 +223,12 @@ class StockAdd extends Component {
 							</div>
 							</div>
 						</fieldset>
+						<fieldset>
+							<div className="form-group">
+							<label className="col-lg-3 control-label">Giá (VNĐ)</label>
+								{parseInt(this.state.gia).toLocaleString('en')}								
+							</div>
+						</fieldset>
 					
 						<fieldset>
 							<div className="form-group">
@@ -229,7 +239,11 @@ class StockAdd extends Component {
 						<fieldset>
 							<div className="form-group">
 							<label className="col-lg-3 control-label">Tình trạng</label>		
-								{`${this.state.soluonghientai>=100?'Còn hàng':`${this.state.soluonghientai<100 && this.state.soluonghientai>0?'Hàng sắp hết':`${this.state.soluonghientai<0?'Nhập hàng gấp':''}`}`}`}
+
+							<label className={`control-label note-label ${this.state.soluonghientai>=100?'label label-primary':`${this.state.soluonghientai<100 && this.state.soluonghientai>0?'label label-warning':`${this.state.soluonghientai<0?'label label-danger':''}`}`}`}>
+							{`${this.state.soluonghientai>=100?'Còn hàng':`${this.state.soluonghientai<100 && this.state.soluonghientai>0?'Hàng sắp hết':`${this.state.soluonghientai<0?'Nhập hàng gấp':''}`}`}`}
+							</label>
+
 							</div>
 							
 						</fieldset>

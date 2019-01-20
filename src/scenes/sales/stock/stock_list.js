@@ -157,6 +157,7 @@ class StockList extends Component {
 							<tr>
 								<th>STT</th>
 								<th>Tên sản phẩm</th>
+								<th>Giá (VNĐ)</th>
 								<th>số lượng</th>
 								<th>Trạng thái</th>
 							</tr>
@@ -164,10 +165,13 @@ class StockList extends Component {
 							<tbody>
 								{ listOutlet && listOutlet.length > 0 ? listOutlet.map((item, index)=>
 									{
+
+										console.log(item);
 										return (
 											<tr key = {index}>
 												<td>{index + 1}</td>
 												<td>{item.name}</td>	
+												<td>{parseInt(item.price).toLocaleString('en')}</td>	
 												<td>{item.stock_balance}</td>									
 												<td>
 													<label className={`${item.stock_balance>=100?'label label-primary':`${item.stock_balance<100 && item.stock_balance>0?'label label-warning':'label label-danger'}`}`}>

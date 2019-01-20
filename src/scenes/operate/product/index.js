@@ -260,7 +260,7 @@ class AddPage extends Component {
 						<div className="widget-body no-padding">
 						<form className="smart-form" id="search">
 							<div className="row input-order">
-							<div className="col col-md-4 col-sm-4 col-xs-4">
+							<div className="col col-md-6 col-sm-6 col-xs-6">
 							<h3>Tên thuốc:</h3>
 								<label className="input">
 								{/* <Autosuggest
@@ -284,7 +284,7 @@ class AddPage extends Component {
 								</label>
 							</div>
 
-							<div className="col col-md-4 col-sm-4 col-xs-12">
+							<div className="col col-md-6 col-sm-6 col-xs-6">
 								<label className="input">
 								<h3>Số lượng:</h3>
 								<input
@@ -296,17 +296,7 @@ class AddPage extends Component {
 								/>
 								</label>
 							</div>
-							<div className="col col-md-4 col-sm-4 col-xs-12">
-								<label className="input">
-								<h3>Thành tiền:</h3>
-								<Cleave
-									name="t"
-									id="one"
-									placeholder="Thành Tiền"
-									
-								/>
-								</label>
-							</div>
+							
 							</div>
 							<footer>
 							<button
@@ -343,9 +333,7 @@ class AddPage extends Component {
 									<tr>
 									<th>STT</th>
 									<th>Tên</th>
-									<th>Số lượng</th>
-									<th>Giá</th>
-									<th>Thành Tiền</th>
+									<th>Số lượng</th>									
 									<th>Thay đổi</th>
 									</tr>
 								</thead>
@@ -355,12 +343,7 @@ class AddPage extends Component {
 								</table>
 							</div>
 							</div>
-						</div>
-						<div className="col-sm-8">
-							<label className="input">
-							<h3 className="fontWeight">Tổng tiền:</h3>
-							</label>
-						</div>
+						</div>						
 						<div className="col-sm-4">
 							<label className="input">
 							<h3 className="fontWeight">

@@ -1,0 +1,84 @@
+{
+  "items": [
+    {
+      "_id": "actions",
+      "title": "Đơn hàng",
+      "icon": "fa fa-fw fa-tag",
+      "items": [
+        {
+          "_id": "widget",
+          "title": "Tạo đơn hàng",
+          "icon": "fa fa-lg fa-fw fa-plus",
+          "route": "/noi-dung"
+        },
+        {
+          "_id": "search_invoice",
+          "title": "Danh sách đơn hàng",
+          "icon": "fa fa-fw fa-sticky-note-o",
+          "route": "/tra-cuu/don-hang"
+        },
+        {
+          "_id": "debt_list",
+          "title": "Danh sách công nợ",
+          "icon": "fa fa-fw fa-book",
+          "route": "/tra-cuu/cong-no"
+        }
+      ]
+    },
+    {
+      "_id": "product",
+      "title": "Khách Hàng",
+      "icon": "fa fa-fw fa-users",
+      "items": [
+        {
+          "_id": "vendor_list",
+          "title": "Danh sách khách hàng",
+          "icon": "fa fa-fw fa-list-alt",
+          "route": "/san-pham"
+        },
+        {
+          "_id": "list_khach_hang",
+          "title": "Thêm khách hàng",
+          "icon": "fa fa-fw fa-plus",
+          "route": "/them-khach-hang"
+        }
+      ]
+    },
+    {
+      "_id": "search",
+      "title": "Cửa hàng",
+      "icon": "fa fa-fw fa-table",
+      "items": [
+        {
+          "_id": "temp_delete",
+          "title": "Xóa thuốc",
+          "icon": "fa fa fa-remove",
+          "route": "/tra-cuu/temporary-deleted-product"
+        },
+        {
+          "_id": "perm_delete",
+          "title": "Thuốc xóa tạm",
+          "icon": "fa fa-fw  fa-trash-o",
+          "route": "/tra-cuu/permanently-deleted-product"
+        },
+        {
+          "_id": "stock",
+          "title": "Nhập hàng",
+          "icon": "fa fa-fw fa-university",
+          "items": [
+            {
+              "_id": "stock_list",
+              "title": "Danh sách",
+              "icon": "fa fa-fw fa-list-ol",
+              "route": "/sales/stock/list"
+            }
+            
+          ]
+        }
+      ]
+    }
+  
+   
+   
+  ]
+}

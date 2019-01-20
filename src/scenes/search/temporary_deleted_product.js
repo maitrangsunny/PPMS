@@ -12,29 +12,22 @@ class TemporaryDeletedProduct extends Component{
     constructor(props) {
         super(props);
         this.state = {
-			loading: false,			
-            data: [],            
-			listSelect: [],
-			searchList: [],
-			keyword: ""
+          loading: false,			
+          data: [],            
+          listSelect: [],
+          searchList: [],
+          keyword: ""
         }  
-    }
-
-    componentWillMount(){        
-     	this.props.actions.product.searchListProduct(
-			this.props.storage.token,
-			this.state.keyword
-        );
     }
 
     componentWillReceiveProps(nextProps){             
 
-		if (nextProps.product.searchProductList && nextProps.product.searchProductList.status == 200) {
-          this.setState({
-				data: nextProps.product.searchProductList.data,
-				loading: false,
-          });
-		}
+        if (nextProps.product.searchProductList && nextProps.product.searchProductList.status == 200) {
+              this.setState({
+            data: nextProps.product.searchProductList.data,
+            loading: false,
+              });
+        }
         
         if (
             nextProps.product.deleteTempProduct &&
@@ -66,14 +59,14 @@ class TemporaryDeletedProduct extends Component{
 	}
 
 	async searchList(){	
-		if(this.state.keyword.length>=3){
+		if(this.state.keyword.length>=2){
 			this.setState({loading: true});
 			await	this.props.actions.product.searchListProduct(
 				this.props.storage.token,
 				this.state.keyword
 			);
 		}else{
-			alert("Nhập từ khóa từ 3 ký tự trở lên!")
+			alert("Nhập từ khóa từ 2 ký tự trở lên!")
 		}
 		
 	}
@@ -164,7 +157,7 @@ class TemporaryDeletedProduct extends Component{
 					<div className="widget-body no-padding">
 					<form className="smart-form" id="search">
 						<fieldset>
-						<label className="col-xs-12 text-center" style={{"paddingBottom":'10px'}}>Vui lòng nhập từ khóa từ 3 ký tự trở lên.</label>													<div className="form-group form-group--search">							
+						<label className="col-xs-12 text-center" style={{"paddingBottom":'10px'}}>Vui lòng nhập từ khóa từ 2 ký tự trở lên.</label>													<div className="form-group form-group--search">							
 							<label className="col-xs-12 col-md-3 col-sm-3 control-label">Tên thuốc</label>
 							<div className="col-xs-12 col-md-5 col-sm-5">							
 								<input className="col-xs-12 form-control" 

@@ -126,7 +126,7 @@ class PermanentlyDeletedProduct extends Component{
             <div className="row">
               <div className="col-xs-12 col-sm-7 col-md-7 col-lg-4">
                 <h1 className="page-title txt-color-blueDark">
-                    Thông tin thuốc xóa tạm
+                    Thông tin thuốc tạm xóa
                 </h1>
               </div>
               <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
