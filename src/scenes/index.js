@@ -36,7 +36,8 @@ import PendingOrderList from './search';
 import PermanentlyDeletedProduct from './search';
 import TemporaryDeletedProduct from './search';
 
-import AddPage from "./operate/product"
+import AddPage from "./operate/product";
+import StoreList from "./operate/storephamarcy";
 
 import Configs from "../configs";
 
@@ -95,6 +96,7 @@ render(
           
           
           <Route path="/add-customer-page" component={AddPage} />
+          <Route path="/store" component={StoreList} />
         </Switch>
       </Launcher>
     </ConnectedRouter>

@@ -24,7 +24,8 @@ const LINK = {
   PRINT: "print",
   PRODUCT_PENDING: "product-pending",
 
-  ADD_CUSTOMER_PAGE: "add-customer-page"
+  ADD_CUSTOMER_PAGE: "add-customer-page",
+  STORE: "store"
 };
 
 const BIGBOX = {
@@ -292,6 +293,9 @@ export default class {
       case "add-customer-page":
         prefix = "/add-customer-page/";
         break;
+      case "store":
+      prefix = "/store/";
+      break;
     }
 
     return prefix + slug + suffix;

@@ -41,15 +41,6 @@ class TemporaryDeletedProduct extends Component{
 				);
         }
 	}
-	
-	handleChange = (event) => {
-		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value ;
-		const name = target.name;
-		this.setState({
-			[name]: value
-		});
-	}
 
 	deletedProduct() {
 		this.props.actions.product.deletedTempProduct(
@@ -67,7 +58,7 @@ class TemporaryDeletedProduct extends Component{
 			);
 		}else{
 			alert("Nhập từ khóa từ 2 ký tự trở lên!")
-		}
+    }
 		
 	}
 
@@ -160,12 +151,14 @@ class TemporaryDeletedProduct extends Component{
 						<label className="col-xs-12 text-center" style={{"paddingBottom":'10px'}}>Vui lòng nhập từ khóa từ 2 ký tự trở lên.</label>													<div className="form-group form-group--search">							
 							<label className="col-xs-12 col-md-3 col-sm-3 control-label">Tên thuốc</label>
 							<div className="col-xs-12 col-md-5 col-sm-5">							
-								<input className="col-xs-12 form-control" 
-										onChange={this.handleChange}
+								<input className="col-xs-12 form-control"
 										name="keyword"
 										style={inputStyle}		
 										value={this.state.keyword}
-										placeholder="Từ khóa..."						
+                    placeholder="Từ khóa..."		
+                    onChange={e =>
+                      this.setState({ keyword: e.target.value})
+                    }   				
 								/>				
 							</div>
 							<div className="col-xs-12 col-md-4 col-sm-4">

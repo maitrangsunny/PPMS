@@ -180,137 +180,143 @@ class AddPage extends Component {
 				<div id="main" role="main">
 					<Ribbon />
 					<div id="content">
-					<div className="row">
-					<div className="col-xs-12 col-sm-7 col-md-7">
-						<h1 className="page-title txt-color-blueDark">Vui lòng nhập thông tin</h1>
-					</div>
-					<div className="col-xs-12 col-sm-5 col-md-5">
-						<ul id="sparks" className="">
-						<li className="sparks-info">
-							<button                  
-							type="button"
-							className="btn btn-success btn-lg"
-							>
-							Đặt hàng
-							</button>
-						</li>
-						</ul>
-					</div>
-					</div>
-					<JarvisWidget editbutton={false} custombutton={false}>
-					<header>
-						<span className="widget-icon">
-						<i className="fa fa-edit" />
-						</span>
-						<h2>Thông tin khách hàng</h2>
-					</header>
-					<div>
-						{/* widget content */}
-						<div className="no-padding">
-						<form className="smart-form" id="search">
-							<div className="row input-order">
-							<div className="col col-md-6 col-sm-6 col-xs-6">
-								<label className="input">
-								<h3>Tên khách hàng :</h3>
-								<input
-									type="text"
-									placeholder="Họ tên"
-								/>
-								</label>
+						<div className="heading-info">
+							<div className="row">
+								<div className="col-xs-12 col-sm-7 col-md-7">
+									<h1 className="page-title txt-color-blueDark page-title--mg">Vui lòng nhập thông tin</h1>
+									<div className="bt-solid"></div>
+								</div>
+								<div className="col-xs-12 col-sm-5 col-md-5">
+									<ul id="sparks" className="">
+									<li className="sparks-info">
+										<button                  
+										type="button"
+										className="btn btn-common btn-orange btn-lg"
+										>
+										Đặt hàng
+										</button>
+									</li>
+									</ul>
+								</div>
 							</div>
-
-							<div className="col col-md-6 col-sm-6 col-xs-6">
-								<label className="input">
-								<h3>Số điện thoại:</h3>
-								<input
-									type="number"
-									name="t"
-									placeholder="Số điện thoại"
-									id="one"                     
-								/>
-								</label>
-							</div>
-							</div>
-
-							<div className="row input-order">
-							<div className="col col-lg-12 col-sm-12 col-xs-12">
-								<label className="input">
-								<h3>Địa chỉ :</h3>
-								<input
-									type="text"                       
-									name="t"
-									placeholder="Địa chỉ"
-								
-								/>
-								</label>
-							</div>
-							</div>
-						</form>
 						</div>
-					</div>
-					</JarvisWidget>
-					<JarvisWidget editbutton={false} custombutton={false}>
-					<header>
-						<span className="widget-icon">
-						<i className="fa fa-edit" />
-						</span>
-						<h2>Nội dung</h2>
-					</header>
-					<div>
-						<div className="widget-body no-padding">
-						<form className="smart-form" id="search">
-							<div className="row input-order">
-							<div className="col col-md-6 col-sm-6 col-xs-6">
-							<h3>Tên thuốc:</h3>
-								<label className="input">
-								{/* <Autosuggest
-									suggestions={suggestions}
-									onSuggestionsFetchRequested={
-									this.onSuggestionsFetchRequested
-									}
-									onSuggestionsClearRequested={
-									this.onSuggestionsClearRequested
-									}
-									getSuggestionValue={getSuggestionValue}
-									renderSuggestion={renderSuggestion}
-									inputProps={inputProps}
-									theme={theme}
-									highlightFirstSuggestion={true}
-									onSuggestionSelected={this.onSuggestionSelected}
-									renderInputComponent={inputProps => (
-									<input {...inputProps} ref={c => (this._input = c)}/>
-								)}/> */}
-								
-								</label>
-							</div>
+						<JarvisWidget editbutton={false} custombutton={false}>
+							<header>
+								<span className="widget-icon">
+								<i className="fa fa-edit" />
+								</span>
+								<h2>Thông tin khách hàng</h2>
+							</header>
+							<div>
+								{/* widget content */}
+								<div className="no-padding">
+								<form className="smart-form" id="search">
+									<div className="row input-order">
+									<div className="col col-md-6 col-sm-6 col-xs-6">
+										<label className="input">
+										<h3>Tên khách hàng :</h3>
+										<input
+											type="text"
+											placeholder="Họ tên"
+										/>
+										</label>
+									</div>
 
-							<div className="col col-md-6 col-sm-6 col-xs-6">
-								<label className="input">
-								<h3>Số lượng:</h3>
-								<input
-									type="number"
-									name="t"
-									placeholder="Số lượng"
-									id="one"
-								
-								/>
-								</label>
+									<div className="col col-md-6 col-sm-6 col-xs-6">
+										<label className="input">
+										<h3>Số điện thoại:</h3>
+										<input
+											type="text"
+											name="t"
+											placeholder="Số điện thoại"
+											id="one"                     
+										/>
+										</label>
+									</div>
+									</div>
+
+									<div className="row input-order">
+									<div className="col col-lg-12 col-sm-12 col-xs-12">
+										<label className="input">
+										<h3>Địa chỉ :</h3>
+										<input
+											type="text"                       
+											name="t"
+											placeholder="Địa chỉ"
+										
+										/>
+										</label>
+									</div>
+									</div>
+								</form>
+								</div>
 							</div>
-							
+						</JarvisWidget>
+						<JarvisWidget editbutton={false} custombutton={false}>
+							<header>
+								<span className="widget-icon">
+								<i className="fa fa-edit" />
+								</span>
+								<h2>Nội dung</h2>
+							</header>
+							<div>
+								<div className="widget-body no-padding">
+								<form className="smart-form" id="search">
+									<div className="row input-order">
+									<div className="col col-md-6 col-sm-6 col-xs-6">
+									<h3>Tên thuốc:</h3>
+										<label className="input">
+										{/* <Autosuggest
+											suggestions={suggestions}
+											onSuggestionsFetchRequested={
+											this.onSuggestionsFetchRequested
+											}
+											onSuggestionsClearRequested={
+											this.onSuggestionsClearRequested
+											}
+											getSuggestionValue={getSuggestionValue}
+											renderSuggestion={renderSuggestion}
+											inputProps={inputProps}
+											theme={theme}
+											highlightFirstSuggestion={true}
+											onSuggestionSelected={this.onSuggestionSelected}
+											renderInputComponent={inputProps => (
+											<input {...inputProps} ref={c => (this._input = c)}/>
+										)}/> */}
+										
+										</label>
+									</div>
+
+									<div className="col col-md-6 col-sm-6 col-xs-6">
+										<label className="input">
+										<h3>Số lượng:</h3>
+										<input
+											type="number"
+											name="t"
+											placeholder="Số lượng"
+											id="one"
+										
+										/>
+										</label>
+									</div>
+									
+									</div>
+									<footer>
+									<button
+										type="button"                
+										className="btn btn-common btn-blue"
+									>
+										{" "}
+										Thêm
+									</button>
+									</footer>
+								</form>
+								</div>
 							</div>
-							<footer>
-							<button
-								type="button"                
-								className="btn btn-primary"
-							>
-								{" "}
-								Thêm
-							</button>
-							</footer>
-						</form>
-						</div>
-					</div>
-					</JarvisWidget>
+						</JarvisWidget>
+						
+					
+					
 					{
 					<JarvisWidget editbutton={false} color="darken">
 						<header>

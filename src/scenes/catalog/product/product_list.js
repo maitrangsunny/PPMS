@@ -104,20 +104,24 @@ class ProductList extends Component {
         {/* <div>
           <CustomerModal data={"asdasda1111s"} />
         </div> */}
-        <div className="row">
-          <div className="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 className="page-title txt-color-blueDark">
-              Danh sách khách hàng
-            </h1>
-          </div>
-          <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-            <ul id="sparks" className="">
-              <li className="sparks-info" />
-            </ul>
+        <div className="heading-info">
+          <div className="row">
+            <div className="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+              <h1 className="page-title txt-color-blueDark page-title--mg">
+                Danh sách khách hàng
+              </h1>
+              <div className="bt-solid"></div>
+            </div>
+            <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+              <ul id="sparks" className="">
+                <li className="sparks-info" />
+              </ul>
+            </div>
           </div>
         </div>
+        
         <JarvisWidget editbutton={false} color="darken">
-          <header>
+          <header className="header-content-panel">
             <span className="widget-icon">
               <i className="fa fa-table" />
             </span>
@@ -125,7 +129,7 @@ class ProductList extends Component {
           </header>
           <div>
             <div className="widget-body no-padding">
-              <div className="custom-table-bill">
+              <div className="custom-table-bill custom-table--list">
                 <div className="table-responsive">
                   <table className="table table-bordered table-striped table-hover">
                     <thead>
@@ -150,7 +154,7 @@ class ProductList extends Component {
                               <th>{item.note}</th>
                               <th style={{whiteSpace:'nowrap'}}> 
                                 <button
-                                  className="btn btn-success"
+                                  className="btn btn-common btn-blue"
                                   type="button"
                                   onClick={() => this.detailCustomer(item.id)}
                                 >
@@ -166,7 +170,7 @@ class ProductList extends Component {
                                   Chi Tiết
                                 </button> */}
                                 <button
-                                  className="btn btn-info"
+                                  className="btn btn-common btn-red"
                                   style={{marginLeft: '5px'}}
                                   onClick={() =>
                                     this.setState({

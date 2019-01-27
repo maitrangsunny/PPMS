@@ -158,7 +158,7 @@ class StockList extends Component {
 								<th>STT</th>
 								<th>Tên sản phẩm</th>
 								<th>Giá (VNĐ)</th>
-								<th>số lượng</th>
+								<th>Số lượng</th>
 								<th>Trạng thái</th>
 							</tr>
 							</thead>

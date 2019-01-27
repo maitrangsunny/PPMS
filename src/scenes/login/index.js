@@ -61,8 +61,9 @@ class Login extends Component {
   }
 
   switchRoute(e){
-	 
-	  this.props.actions.app.navigate(Utils.link(LINK.ADD_CUSTOMER_PAGE));
+    // this.props.actions.app.navigate(Utils.link(LINK.ADD_CUSTOMER_PAGE));
+    this.props.actions.app.navigate(Utils.link(LINK.STORE));
+   
   }
 
   handerRegister(e) {

@@ -34,15 +34,15 @@ export default class Loadig extends Component {
       >
         <div>
           <h4>Bạn muốn xóa người này khỏi danh sách</h4>
-          <div className="btn-confirm-customer">
+          <div className="btn-confirm-customer text-center">
             <button
-              className="btn btn-success col-xs-offset-2"
+              className="btn btn-common btn-green"
               onClick={() => actionRight()}
             >
               Đồng Ý
             </button>
             <button
-              className="btn btn-danger col-xs-offset-3"
+              className="btn btn-common btn-red"
               onClick={() => actionLeft()}
             >
               Hủy bỏ
