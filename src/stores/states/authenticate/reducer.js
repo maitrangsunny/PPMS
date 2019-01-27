@@ -16,6 +16,7 @@ const INIT_STATE = {
   updateOutlet: [],
   listOutlet: [],
   register: [],
+  registerCustomer: [],
 
   addUser: [],
   detailAdmin: [],
@@ -32,6 +33,7 @@ const INIT_STATE = {
 
   flagLogin: true,
   flagRegister: true,
+  flagRegisterCustomer: true,
   flagListProduct: true,
   flagDeleteCustomer: true,
   flagSendCode: true,
@@ -89,6 +91,17 @@ export default createReducer(INIT_STATE, {
       error: action.response.message,
       success: action.response.message,
       flagRegister: false,
+    };
+  },
+
+  [Types.REGISTER_CUSTOMER_SUCCESS]: (state, action) => {
+    console.log(action.response);
+    return {
+      ...state,
+      registerCustomer: action.response,
+      error: action.response.message,
+      success: action.response.message,
+      flagRegisterCustomer: false,
     };
   },
 
@@ -310,6 +323,14 @@ export default createReducer(INIT_STATE, {
     return {
       ...state,
       flagRegister: action.payload,
+    };
+  },
+
+  [Types.SET_FLAG_REGISTER_SUCCESS]: (state, action) => {
+    console.log(action.payload);
+    return {
+      ...state,
+      flagRegisterCustomer: action.payload,
     };
   },
 

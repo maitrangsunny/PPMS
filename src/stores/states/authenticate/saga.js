@@ -68,6 +68,11 @@ function* register(action) {
   yield put({ ...action, type: Types.REGISTER_SUCCESS, response });
 }
 
+function* registerCustomer(action) {
+  let response = yield call(API.request, action.payload);
+  yield put({ ...action, type: Types.REGISTER_CUSTOMER_SUCCESS, response });
+}
+
 function* addUser(action) {
   let response = yield call(API.request, action.payload);
   yield put({ ...action, type: Types.ADD_USER_SUCCESS, response });
@@ -151,5 +156,6 @@ export default function* saga() {
     yield takeLatest(Types.GET_ALL_PRODUCT, allProduct),
     yield takeLatest(Types.SUBMIT_ORDER, submit),
     yield takeLatest(Types.LOGIN, login),
+    yield takeLatest(Types.REGISTER_CUSTOMER, registerCustomer),
   ]);
 }

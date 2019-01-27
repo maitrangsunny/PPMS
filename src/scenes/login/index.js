@@ -5,6 +5,7 @@ import Utils, { LINK } from "../../utils";
 import FUNC from "../../utils";
 import Connect from "../../stores/connect";
 import Loading from "../../components/loading";
+import {Tabs, Tab} from "react-bootstrap";
 
 const styleText = {
   color: "#3677af",
@@ -251,149 +252,293 @@ class Login extends Component {
               <div className="col-xs-12 col-sm-12 col-md-5 col-lg-4">
                 <div className="well no-padding">
                   {this.state.register ? (
-                    <form id="register-form" className="smart-form client-form">
-                      <header>Đăng Ký</header>
-                      <fieldset>
-                        {this.state.showError ? (
-                          <section>
-                            <div className="alert alert-danger fade in">
-                              <i className="fa-fw fa fa-times" />
-                              <strong>Lỗi!</strong>{" "}
-                              {this.props.authenticate.error}
-                            </div>
-                          </section>
-                        ) : this.state.showSuccess ? (
-                          <section>
-                            <div className="alert alert-success fade in">
-                              <i className="fa-fw fa fa-times" />
-                              <strong>Thành Công</strong>{" "}
-                              {this.props.authenticate.success}
-                            </div>
-                          </section>
-                        ) : null}
-                        <section>
-                          <label className="label">Tên</label>
-                          <label className="input">
-                            {" "}
-                            <i className="icon-append fa fa-user" />
-                            <input
-                              type="email"
-                              onChange={abc =>
-                                this.setState({
-                                  registerName: abc.target.value,
-                                })
-                              }
-                              name="name"
-                              data-smart-validate-input=""
-                              data-required=""
-                              data-email=""
-                              data-message-required="Please enter your email address"
-                              data-message-email="Please enter a VALID email address"
-                            />
-                            <b className="tooltip tooltip-top-right">
-                              <i className="fa fa-user txt-color-teal" />
-                              Email
-                            </b>
-                          </label>
-                        </section>
 
-                        <section>
-                          <label className="label">Email</label>
-                          <label className="input">
-                            {" "}
-                            <i className="icon-append fa fa-user" />
-                            <input
-                              type="email"
-                              onChange={abc =>
-                                this.setState({
-                                  registerEmail: abc.target.value,
-                                })
-                              }
-                              name="email"
-                              data-smart-validate-input=""
-                              data-required=""
-                              data-email=""
-                              data-message-required="Please enter your email address"
-                              data-message-email="Please enter a VALID email address"
-                            />
-                            <b className="tooltip tooltip-top-right">
-                              <i className="fa fa-user txt-color-teal" />
-                              Email
-                            </b>
-                          </label>
-                        </section>
-                        <section>
-                          <label className="label">Mật khẩu</label>
-                          <label className="input">
-                            {" "}
-                            <i className="icon-append fa fa-lock" />
-                            <input
-                              type="password"
-                              name="password"
-                              onChange={def =>
-                                this.setState({
-                                  resigterPass: def.target.value,
-                                })
-                              }
-                              data-smart-validate-input=""
-                              data-required=""
-                              data-minlength="3"
-                              data-maxnlength="20"
-                              data-message="Please enter your email password"
-                            />
-                            <b className="tooltip tooltip-top-right">
-                              <i className="fa fa-lock txt-color-teal" /> Mật
-                              khẩu
-                            </b>{" "}
-                          </label>
-                        </section>
-                        <section>
-                          <label className="label">Xác nhận mật khẩu</label>
-                          <label className="input">
-                            {" "}
-                            <i className="icon-append fa fa-user" />
-                            <input
-                              type="password"
-                              onChange={abc =>
-                                this.setState({ confirmPass: abc.target.value })
-                              }
-                              name="xacnhan"
-                              data-smart-validate-input=""
-                              data-required=""
-                              data-email=""
-                              data-message-required="Please enter your email address"
-                              data-message-email="Please enter a VALID email address"
-                            />
-                            <b className="tooltip tooltip-top-right">
-                              <i className="fa fa-user txt-color-teal" />
-                              Email
-                            </b>
-                          </label>
-                        </section>
-                        <section>
-                          <label className="checkbox">
-                            <input
-                              type="checkbox"
-                              name="remember"
-                              defaultChecked={true}
-                            />
-                            <i />Stay signed in
-                          </label>
-                        </section>
-                      </fieldset>
-                      <footer>
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          onClick={evt => this.handerRegister(evt)}
-                        >
-                          Đăng ký
-                        </button>
-                        <a onClick={() => this.setState({ register: false })}>
-                          Đã có tài khoản ? Đăng nhập
-                        </a>
-                      </footer>
-                    </form>
+                    <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                      <Tab eventKey={1} title="Đăng ký quản lý">
+                        <form id="register-form" className="smart-form client-form">
+                          <header>Vui lòng điền thông tin</header>
+                          <fieldset>
+                            {this.state.showError ? (
+                              <section>
+                                <div className="alert alert-danger fade in">
+                                  <i className="fa-fw fa fa-times" />
+                                  <strong>Lỗi!</strong>{" "}
+                                  {this.props.authenticate.error}
+                                </div>
+                              </section>
+                            ) : this.state.showSuccess ? (
+                              <section>
+                                <div className="alert alert-success fade in">
+                                  <i className="fa-fw fa fa-times" />
+                                  <strong>Thành Công</strong>{" "}
+                                  {this.props.authenticate.success}
+                                </div>
+                              </section>
+                            ) : null}
+                            <section>
+                              <label className="label">Tên</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-user" />
+                                <input
+                                  type="email"
+                                  onChange={abc =>
+                                    this.setState({
+                                      registerName: abc.target.value,
+                                    })
+                                  }
+                                  name="name"
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-email=""
+                                  data-message-required="Please enter your email address"
+                                  data-message-email="Please enter a VALID email address"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-user txt-color-teal" />
+                                  Email
+                                </b>
+                              </label>
+                            </section>
+
+                            <section>
+                              <label className="label">Email</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-user" />
+                                <input
+                                  type="email"
+                                  onChange={abc =>
+                                    this.setState({
+                                      registerEmail: abc.target.value,
+                                    })
+                                  }
+                                  name="email"
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-email=""
+                                  data-message-required="Please enter your email address"
+                                  data-message-email="Please enter a VALID email address"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-user txt-color-teal" />
+                                  Email
+                                </b>
+                              </label>
+                            </section>
+                            <section>
+                              <label className="label">Mật khẩu</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-lock" />
+                                <input
+                                  type="password"
+                                  name="password"
+                                  onChange={def =>
+                                    this.setState({
+                                      resigterPass: def.target.value,
+                                    })
+                                  }
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-minlength="3"
+                                  data-maxnlength="20"
+                                  data-message="Please enter your email password"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-lock txt-color-teal" /> Mật
+                                  khẩu
+                                </b>{" "}
+                              </label>
+                            </section>
+                            <section>
+                              <label className="label">Xác nhận mật khẩu</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-user" />
+                                <input
+                                  type="password"
+                                  onChange={abc =>
+                                    this.setState({ confirmPass: abc.target.value })
+                                  }
+                                  name="xacnhan"
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-email=""
+                                  data-message-required="Please enter your email address"
+                                  data-message-email="Please enter a VALID email address"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-user txt-color-teal" />
+                                  Email
+                                </b>
+                              </label>
+                            </section>
+                            <section>
+                              <label className="checkbox">
+                                <input
+                                  type="checkbox"
+                                  name="remember"
+                                  defaultChecked={true}
+                                />
+                                <i />Stay signed in
+                              </label>
+                            </section>
+                          </fieldset>
+                          <footer>
+                            <button
+                              type="button"
+                              className="btn btn-common btn-blue"
+                              onClick={evt => this.handerRegister(evt)}
+                            >
+                              Đăng ký
+                            </button>
+                            <a onClick={() => this.setState({ register: false })}>
+                              Đã có tài khoản ? Đăng nhập
+                            </a>
+                          </footer>
+                        </form>
+                      </Tab>
+                    <Tab eventKey={2} title="Đăng ký thành viên">
+                      <form id="register-form" className="smart-form client-form">
+                          <header>Vui lòng điền thông tin</header>
+                          <fieldset>
+                            {this.state.showError ? (
+                              <section>
+                                <div className="alert alert-danger fade in">
+                                  <i className="fa-fw fa fa-times" />
+                                  <strong>Lỗi!</strong>{" "}
+                                  {this.props.authenticate.error}
+                                </div>
+                              </section>
+                            ) : this.state.showSuccess ? (
+                              <section>
+                                <div className="alert alert-success fade in">
+                                  <i className="fa-fw fa fa-times" />
+                                  <strong>Thành Công</strong>{" "}
+                                  {this.props.authenticate.success}
+                                </div>
+                              </section>
+                            ) : null}
+                            <section>
+                              <label className="label">Tên</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-user" />
+                                <input
+                                  type="email"
+                                  
+                                  name=""
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-email=""
+                                  data-message-required="Please enter your email address"
+                                  data-message-email="Please enter a VALID email address"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-user txt-color-teal" />
+                                  Email
+                                </b>
+                              </label>
+                            </section>
+
+                            <section>
+                              <label className="label">Email</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-user" />
+                                <input
+                                  type="email"
+                                
+                                  name=""
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-email=""
+                                  data-message-required="Please enter your email address"
+                                  data-message-email="Please enter a VALID email address"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-user txt-color-teal" />
+                                  Email
+                                </b>
+                              </label>
+                            </section>
+                            <section>
+                              <label className="label">Mật khẩu</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-lock" />
+                                <input
+                                  type="password"
+                                  name=""
+                                  
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-minlength="3"
+                                  data-maxnlength="20"
+                                  data-message="Please enter your email password"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-lock txt-color-teal" /> Mật
+                                  khẩu
+                                </b>{" "}
+                              </label>
+                            </section>
+                            <section>
+                              <label className="label">Xác nhận mật khẩu</label>
+                              <label className="input">
+                                {" "}
+                                <i className="icon-append fa fa-user" />
+                                <input
+                                  type="password"
+                                  
+                                  name=""
+                                  data-smart-validate-input=""
+                                  data-required=""
+                                  data-email=""
+                                  data-message-required="Please enter your email address"
+                                  data-message-email="Please enter a VALID email address"
+                                />
+                                <b className="tooltip tooltip-top-right">
+                                  <i className="fa fa-user txt-color-teal" />
+                                  Email
+                                </b>
+                              </label>
+                            </section>
+                            <section>
+                              <label className="checkbox">
+                                <input
+                                  type="checkbox"
+                                  name="remember"
+                                  defaultChecked={true}
+                                />
+                                <i />Stay signed in
+                              </label>
+                            </section>
+                          </fieldset>
+                          <footer>
+                            <button
+                              type="button"
+                              className="btn btn-common btn-green"
+                              
+                            >
+                              Đăng ký
+                            </button>
+                            <a onClick={() => this.setState({ register: false })}>
+                              Đã có tài khoản ? Đăng nhập
+                            </a>
+                          </footer>
+                        </form>
+                    </Tab>
+                  </Tabs>
+                  
+
+
+
+
+
+
+
                   ) : (
                     <form id="login-form" className="smart-form client-form">
                       <header>Đăng nhập</header>
@@ -607,7 +752,7 @@ class Login extends Component {
                         </a>
                         <button
                           type="button"
-                          className="btn btn-primary"
+                          className="btn btn-common btn-green"
                           onClick={evt => this.handleLogin(evt)}
                         >
                           Đăng Nhập

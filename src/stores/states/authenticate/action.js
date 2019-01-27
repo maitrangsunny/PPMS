@@ -30,6 +30,22 @@ export function register(data) {
   };
 }
 
+export function registerCustomer(data) {
+  return {
+    type: Types.REGISTER_CUSTOMER,
+    payload: {
+      api: Configs.API + "registerCustomer",
+      method: "POST",
+      payload: {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      },
+    },
+  };
+}
+
+
 export function updateOutlet(token, id, soluong) {
 	return {
 		type: Types.UPDATE_OUTLET,

@@ -41,6 +41,9 @@ export default keymirror(
     REGISTER: null,
     REGISTER_SUCCESS: null,
 
+    REGISTER_CUSTOMER: null,
+    REGISTER_CUSTOMER_SUCCESS: null,
+
     ADD_USER: null,
     ADD_USER_SUCCESS: null,
 
@@ -74,6 +77,7 @@ export default keymirror(
 
     SET_FLAG_LOGIN: null,
     SET_FLAG_REGISTER: null,
+    SET_FLAG_REGISTER_SUCCESS: null,
     SET_FLAG_SENDCODE: null,
     SET_FLAG_RESET_PASS: null,
     SET_FLAG_DETAIL_BILL: null,
