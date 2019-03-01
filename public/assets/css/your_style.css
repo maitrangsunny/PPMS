@@ -201,13 +201,15 @@ input[type="checkbox"].switch:checked + div > div {
 }
 
 /* style table */
-.custom-table--list thead>tr{
+.custom-table--list thead>tr,
+.custom-table-bill thead>tr{
   background-color: #3C8DBC;
   background-image: none;
   color: #FFF;
 }
 
-.custom-table--list table>thead:first-child>tr:first-child>th {
+.custom-table--list table>thead:first-child>tr:first-child>th,
+.custom-table-bill table>thead:first-child>tr:first-child>th {
   white-space: nowrap;
   text-transform: capitalize;
 }
@@ -281,6 +283,14 @@ input[type="checkbox"].switch:checked + div > div {
 
 .bt-mg {
   margin-top: 20px;
+}
+
+.bt-ml {
+  margin-left: 10px;
+}
+
+.bt-mr {
+  margin-right: 10px;
 }
 
 /* style panel */

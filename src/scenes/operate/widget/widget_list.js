@@ -1030,7 +1030,7 @@ class WidgetList extends Component {
 			<th>
 			<button
 				type="button"
-				className="btn btn-success col-xs-offset-1"
+				className="btn btn-common btn-green"
 				onClick={() => this.deleteThuoc(index)}
 			>
 				Xóa
@@ -1038,7 +1038,7 @@ class WidgetList extends Component {
 
 			<button
 				type="button"
-				className="btn btn-warning col-xs-offset-1"
+				className="btn btn-common btn-orange bt-ml bt-mr"
 				onClick={() => this.selectEdit(index, item, "edit")}
 			>
 				Chỉnh sửa

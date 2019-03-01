@@ -168,9 +168,12 @@ class SearchCart extends Component {
         </div> */}
         <div className="row">
           <div className="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 className="page-title txt-color-blueDark">
-              Danh Sách Đơn Hàng
-            </h1>
+            <div class="heading-info">
+              <h1 className="page-title txt-color-blueDark page-title--mg">
+                Danh Sách Đơn Hàng
+              </h1>
+              <div className="bt-solid"></div>
+            </div>            
           </div>
           <div className="col-xs-12 col-sm-5 col-md-5 col-lg-8">
             <ul id="sparks" className="">
@@ -182,7 +185,7 @@ class SearchCart extends Component {
                     })
                   }
                   type="button"
-                  className="btn btn-success btn-lg"
+                  className="btn btn-common btn-green btn-lg"
                 >
                   Xem Tất Cả
                 </button>
@@ -262,7 +265,7 @@ class SearchCart extends Component {
                     <button
                       onClick={() => this.locData()}
                       type="button"
-                      className="btn btn-success btn-lg"
+                      className="btn btn-common btn-green btn-lg"
                     >
                       Lọc
                     </button>
@@ -303,9 +306,9 @@ class SearchCart extends Component {
                               <th>{this.getTime(item.delivery_date)}</th>
                               <th>{item.phone}</th>
                               <th>{item.note}</th>
-                              <th style={{whiteSpace:'nowrap'}}>
+                              <th style={{whiteSpace:'nowrap', width: '180px'}}>
                                 <button
-                                  className="btn btn-success"
+                                  className="btn btn-common btn-blue"
                                   type="button"
                                   onClick={() => this.detailOrder(item.id)}
                                 >
@@ -323,10 +326,10 @@ class SearchCart extends Component {
                                   Chi Tiết
                                 </button> */}
                                 <Link
-								  className="btn btn-info"
-								  style={{marginLeft: '5px'}}
-								  to={Utils.link(LINK.WIDGET, item.id)
-									}
+                                  className="btn btn-common btn-orange"
+                                  style={{marginLeft: '5px'}}
+                                  to={Utils.link(LINK.WIDGET, item.id)
+                                  }
                                 >
                                   Chỉnh sửa
                                 </Link>
